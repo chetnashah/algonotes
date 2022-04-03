@@ -1,1 +1,3 @@
 # algonotes
+
+Notes on algorithms

@@ -30,16 +30,16 @@ This helps prevent overflow that can occur with `hi+lo/2`.
 
 **Algorithm Returns first index with p(index) is true**
 Have tried/tested this with all the following possibilites(with pen and paper):
-`FFFFFFFFF` -> Edge case: after finish `lo` will be `n-1`, so check `p(lo) == false`(which means invariant failed) 
-`FFFFFFFFT`
-`FFFFFFFTT`
-`FFFFFFTTT`
-`FFFFFTTTT`
-`FFFFTTTTT`
-`FFFTTTTTT`
-`FFTTTTTTT`
-`FTTTTTTTT`
-`TTTTTTTTT` - works fine, 0 is returned as answer which is correct
+* `FFFFFFFFF` -> Edge case: after finish `lo` will be `n-1`, so check `p(lo) == false`(which means invariant failed) 
+* `FFFFFFFFT`
+* `FFFFFFFTT`
+* `FFFFFFTTT`
+* `FFFFFTTTT`
+* `FFFFTTTTT`
+* `FFFTTTTTT`
+* `FFTTTTTTT`
+* `FTTTTTTTT`
+* `TTTTTTTTT` - works fine, 0 is returned as answer which is correct
 
 ```py
 binary_search(lo, hi, p):

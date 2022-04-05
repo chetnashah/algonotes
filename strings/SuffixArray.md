@@ -47,10 +47,14 @@ Its `N log N * N (cost of comparision of any two strings)`
 
 ### Suffix Array construction in O(n log n)
 
+Quite complex method.
+
+
 #### Adding dollar symbol (Smallest)
 
 it is enough to append an arbitrary character to the end of the string which is smaller than any character from the string. 
-It is common to use the symbol `$`
+It is common to use the symbol `$`.
+Ascii value of `$` is `36` which is less than all alphabets, so it will always appear first in lexicographic ordering/sorted ordering of suffixes.
 
 ### LCP array
 

@@ -26,6 +26,8 @@ Nodes can be in one of following states:
 3. Auxillary array discovery finish time
 4. Auxillary array parent pointers vertex id
 
+### Managing directed vs undirected graphs
+
 ### visited is equivalent to gray color marking of node
 
 
@@ -111,6 +113,29 @@ Cases when `v` is already visted:
 * `Forward edge`: `EXPLORING -> EXPLORED` and `entry[u] < entry[v]`
 * `Cross Edge`: `EXPLORIMG -> EXPLORED` and `entry[u] > entry[v]`
 
+### Cycle finding in undirected graph (special case)
+
+**Undirected graph has bi-directional edge for every undirected edge in a graph**
+So we must take care and ignore parent to child edge when checking adjacent edges from a vertex.
+
+```cpp
+bool dfs(int u, int par) { // passing vertex and its parent vertex
+    visited[u] = true;
+    for (int v : adj[u]) {
+        if(v == par) continue; // skipping edge to parent vertex
+        if (visited[v]) {
+            cycle_end = u;
+            cycle_start = v;
+            return true;
+        }
+        parent[v] = u;
+        if (dfs(v, parent[u]))// recurse, and if any level down you find a cycle, whole graph has a cycle
+            return true;
+    }
+    return false;
+}
+```
+
 ### Applications
 
 1. Connectivity - a connected graph will mark all vertices as visited ina single pass of DFS, does not need to start DFS on a separate vertex
@@ -119,3 +144,5 @@ Cases when `v` is already visted:
 4. Cycle finding in a directed graph - 
 5. Cycle finding in undirected graph - does it make sense?
 6. Classification of edges of a graph
+
+

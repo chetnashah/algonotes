@@ -63,9 +63,25 @@ Covered by checking `p(lo) == false` after algorithm ends.
 
 
 
+### Case: find exact index matching a condition
 
+* Termination condition : `lo <= hi`
+* Mid (same as above): `mid = lo + Math.floor((hi - lo)/2)`
+* how to decide hi/lo
+  * `arr[mid] == target` -> exit loop
+  * `arr[mid] < target` -> `lo = mid + 1`
+  * `arr[mid] > target` -> `hi = mid - 1`
 
-
-
-
-### Case: find exact index 
+```py
+def binSearchExact(arr, target):
+    lo = 0, hi = len(arr) - 1 
+    while (lo <= hi): # runs till they go out of order i.e. after termination lo > hi
+        mid = lo + floor((hi - lo) /2)
+        if(arr[mid] == target):
+            return mid
+        if(arr[mid] < target): # target on right, update lo
+            lo = mid + 1
+        if(arr[mid] > target): # target on left, update hi
+            hi = mid - 1
+    return -1 # not found till lo and hi got swapped
+```

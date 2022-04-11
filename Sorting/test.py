@@ -24,25 +24,32 @@ def hoarePartition(l, r, arr):
     i = l+1
     j = r
     while True: # termination till crossed over
-        while(arr[i] < arr[l]):
+        while(arr[i] <= arr[l]):
             i = i+1
-        while(arr[j] > arr[l]):
+            if i >= r: # without this it will run past right bound
+                break
+        while(arr[j] >= arr[l]):
             j = j-1
+            if j <= l: # without this, it will run past left bound
+                break
         
         if(i >= j): # termination condition
             swapAtIdx(l, j, arr) # final swap pivot with j
-            return
+            return j # return position where we placed the pivot
         
         swapAtIdx(i,j,arr) # unstuck pointers
     
 
+def hoareQuickSort(arr, l, r):
+    print("Quicksort called with indexes: [", l, ", ", r, "]")
+    if (r <= l):
+        return
+    j = hoarePartition(l, r, arr)
+    print("pivot placed in position: ", j)
+    hoareQuickSort(arr, 0, j-1)
+    hoareQuickSort(arr, j+1, r)
 
-arr = [6,2,9,3,1,4,7,5]
-lomutoPartition(0, len(arr)-1, arr)
+arr = [7,6,5,4,3,2,1,0]
+hoareQuickSort(arr, 0 , len(arr) - 1)
+
 print(arr)
-assert arr[-3] == 6 # 6 is third last element before 7 and 9
-
-arr2 = [6,2,9,3,1,4,7,5]
-hoarePartition(0, len(arr2) - 1, arr2)
-print(arr2)
-assert arr[-3] == 6 # 6 is third last element before 7 and 9

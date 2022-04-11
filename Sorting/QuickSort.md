@@ -4,6 +4,7 @@
 https://www.youtube.com/watch?v=AO8Sav4SmSU - Hoare partition
 https://www.youtube.com/watch?v=QvgYAQzg1z8 - Lomuto partition
 https://csanim.com/tutorials/hoares-quicksort-algorithm-python-animated-visualization-code - Hoare partition
+https://algs4.cs.princeton.edu/23quicksort/
 
 ## Partition techniques
 
@@ -120,19 +121,34 @@ def hoarePartition(l, r, arr):
     i = l+1
     j = r
     while True: # termination till crossed over
-        while(arr[i] < arr[l]):
+        while(arr[i] <= arr[l]):
             i = i+1
-        while(arr[j] > arr[l]):
+            if i >= r: # without this it will run past right bound
+                break
+        while(arr[j] >= arr[l]):
             j = j-1
+            if j <= l: # without this, it will run past left bound
+                break
         
         if(i >= j): # termination condition
             swapAtIdx(l, j, arr) # final swap pivot with j
-            return
+            return j # return position where we placed the pivot
         
         swapAtIdx(i,j,arr) # unstuck pointers
 ```
 
 ## quicksort procedure
+
+```py
+def hoareQuickSort(arr, l, r):
+    print("Quicksort called with indexes: [", l, ", ", r, "]")
+    if (r <= l):
+        return
+    j = hoarePartition(l, r, arr)
+    print("pivot placed in position: ", j)
+    hoareQuickSort(arr, 0, j-1)
+    hoareQuickSort(arr, j+1, r)
+```
 
 ### recursive version with lower & upper bound index
 

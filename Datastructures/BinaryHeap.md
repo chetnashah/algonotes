@@ -86,11 +86,13 @@ Bring an element to its final position starting from the bottom.
 ## Common operations
 
 1. peek i.e. lookup largest/smallest - O(1)
-2. remove largest/smallest - O(log n)
+2. remove largest/smallest i.e. ExtractMax - O(log n)
 3. size O(1)
 4. add/insert - O(log n)
-5. Remove arbitrary element?
+5. Remove arbitrary element given Key (Not possible with heap, used Balanced BST like Treemap)
+6. Replace priority/key - (Not possible with heap, use Balanced BST like Treemap).
 
+**Note** - No notion of a search operation.
 
 ## Removing from the heap
 

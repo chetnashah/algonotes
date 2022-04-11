@@ -6,6 +6,8 @@ https://www.youtube.com/watch?v=HqPJF2L5h9U
 https://algs4.cs.princeton.edu/24pq/
 https://www.youtube.com/watch?v=g9YK6sftDi0
 https://www.youtube.com/watch?v=VkKmmwzfIG4
+https://www.youtube.com/watch?v=B7hVxCmfPtM
+https://www.youtube.com/watch?v=KkeIB6soiVI
 
 Two childed tree for getting min/max items easily
 
@@ -76,21 +78,46 @@ In case of min heap,
 In case of max heap,
 `larger of the two children is picked to take paren'ts place`.
 
-## swim/bubble operation - O(lg n)
+```java
+private void sink(int k) {// percolating down starting from index k
+   while (2*k <= N) {
+      int j = 2*k; // left child index
+      if (j < N && less(j, j+1)) { 
+          j++;// if right child is bigger (j+1 = 2*k+1), use it
+      }
+      if (!less(k, j)) // parent(k) is not less than child(j), no need to do anything, break out of the loop
+        break;
+      // fix smaller parent than child by swapping
+      exch(k, j); // swap
+      k = j;// new index to process is that of child
+   }
+}
+```
+
+## swim/bubble/percolate operation - O(lg n)
 
 Needed for heap invariant restoration (Heap ordering property)
 Typically used after a new element is inserted at the bottom.
 Bring an element to its final position starting from the bottom.
 
-
+Swim code is relatively simple:
+```java
+// assuming max heap, larger values swim to top
+private void swim(int k) {
+   while (k > 1 && less(k/2, k)) {// why k > 1 and not k > 0? // parent less than child, need to fix it
+      exch(k, k/2);// fix by exchanging
+      k = k/2; // iterate on parent idx
+   }
+}
+```
 ## Common operations
 
 1. peek i.e. lookup largest/smallest - O(1)
 2. remove largest/smallest i.e. ExtractMax - O(log n)
 3. size O(1)
 4. add/insert - O(log n)
-5. Remove arbitrary element given Key (Not possible with heap, used Balanced BST like Treemap)
-6. Replace priority/key - (Not possible with heap, use Balanced BST like Treemap).
+5. Remove arbitrary element given Key  Check CLRS (Not possible with heap, used Balanced BST like Treemap)
+6. Replace priority/key - check CLRS (Not possible with heap, use Balanced BST like Treemap).
 
 **Note** - No notion of a search operation.
 

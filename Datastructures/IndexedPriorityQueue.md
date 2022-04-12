@@ -2,9 +2,9 @@
 ## why?
 
 `Priority Queue` by itself has no notion of:
-1. search
-2. update a keyed entity
-3. delete a keyed element.
+1. search - `getIdx(k)`
+2. update a keyed entity - `update(k, v)`
+3. delete a keyed element - `delete(k)`
 
 But many algorithms need this functionality, hence IndexedPriorityQueue
 

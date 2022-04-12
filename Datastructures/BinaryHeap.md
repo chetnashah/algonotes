@@ -52,7 +52,6 @@ Naive construction - O(n log n)
 Smart construction - O(n)
 
 
-
 ## Heapifying an existing array in O(N), How?
 
 Idea: Only internal nodes nead to be heapified(i.e. sink/swim). so only nodes 1 to floor(n/2) need to be heapified.
@@ -110,14 +109,15 @@ private void swim(int k) {
    }
 }
 ```
-## Common operations
+## Common operations of priority Queue ADT
 
-1. peek i.e. lookup largest/smallest - O(1)
-2. remove largest/smallest i.e. ExtractMax - O(log n)
-3. size O(1)
-4. add/insert - O(log n)
-5. Remove arbitrary element given Key  Check CLRS (Not possible with heap, used Balanced BST like Treemap)
-6. Replace priority/key - check CLRS (Not possible with heap, use Balanced BST like Treemap).
+1. `peek` i.e. lookup largest/smallest - O(1)
+2.` remove largest/smallest` i.e. ExtractMax - O(log n)
+3. `size` O(1)
+4. `add/insert` - O(log n)
+5. Remove arbitrary element given Key = Indexed Priority Queue ([Indexed Priority Queue](IndexedPriorityQueue.md)
+) or Balanced BSTs
+6. Replace priority/key = ([Indexed Priority Queue](IndexedPriorityQueue.md) or Balanced BSTs
 
 **Note** - No notion of a search operation.
 

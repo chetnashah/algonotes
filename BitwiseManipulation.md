@@ -3,7 +3,7 @@
 ## Get last set bit
 gives the last set bit in a number x
 ```py
-x & (-x) 
+x & (-x) # anding with its own 2's complement
 ```
 
 ## number of set bits in a number
@@ -20,6 +20,14 @@ There are also `__builtin_clz` and `__builtin_ctz` (and their long long versions
 ```py
 def turn_off_rightmost_1bit(num: int) -> str:
     rightmost_1bit_turned_off = num & (num - 1)
+    return f"Rightmost 1-bit in {bin(num)} is turned off and the result: {bin(rightmost_1bit_turned_off)}"
+
+```
+
+Alternative implementation: isolate right most set bit and substract it from original
+```py
+def turn_off_rightmost_1bit(num: int) -> str:
+    rightmost_1bit_turned_off = num - (num & -num)
     return f"Rightmost 1-bit in {bin(num)} is turned off and the result: {bin(rightmost_1bit_turned_off)}"
 ```
 

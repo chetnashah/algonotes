@@ -8,8 +8,10 @@ https://www.youtube.com/watch?v=g9YK6sftDi0
 https://www.youtube.com/watch?v=VkKmmwzfIG4
 https://www.youtube.com/watch?v=B7hVxCmfPtM
 https://www.youtube.com/watch?v=KkeIB6soiVI
+https://visualgo.net/en/heap?slide=1
 
 Two childed tree for getting min/max items easily
+Basic version only supports values, not key-value pairs, for that refer [Indexed Priority Queue](IndexedPriorityQueue.md)
 
 ## Constraint - Must be a complete binary tree
 
@@ -116,8 +118,8 @@ private void swim(int k) {
 3. `size` O(1)
 4. `add/insert` - O(log n)
 5. Remove arbitrary element given Key = Indexed Priority Queue ([Indexed Priority Queue](IndexedPriorityQueue.md)
-) or Balanced BSTs
-6. Replace priority/key = ([Indexed Priority Queue](IndexedPriorityQueue.md) or Balanced BSTs
+) or Balanced BSTs. We could get index to process by searching the key linearly, but that would be O(n).
+6. Replace priority/key = ([Indexed Priority Queue](IndexedPriorityQueue.md) or Balanced BSTs. We could get index to process by searching the key linearly, but that would be O(n).
 
 **Note** - No notion of a search operation.
 

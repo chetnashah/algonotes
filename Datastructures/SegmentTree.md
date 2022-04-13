@@ -136,6 +136,9 @@ intervals are merged together to form larger intervals, starting from `[i,i]`
 
 **Query always happens top-down with full segment-tree interval given which recursively asks smaller intervals**
 
+Idea: split into subqueries starting from `[0, len(arr) - 1]`, breaking into `[tl, tm]`, `[tm + 1, tr]` , 
+and combine them, Pruning happens in the recursion given following base cases: 
+
 Base Case:
 1. Ignore disjoint intervals
 2. include matching intervals
@@ -175,5 +178,35 @@ Walkthrough:
 
 ## Updates
 
+### Point updates
+
+Updates are also recursive:
+
+```cpp
+void update(int v, int tl, int tr, int pos, int new_val) {
+    if (tl == tr) { // we have reached the point, update
+        st[v] = new_val;
+    } else {
+        int tm = (tl + tr) / 2;
+        if (pos <= tm) {
+            update(v*2, tl, tm, pos, new_val);// ask smaller sub interval to update itself
+        } else }
+            update(v*2+1, tm+1, tr, pos, new_val);// ask smaller sub interval to update itself
+        }
+        st[v] = st[v*2] + st[v*2+1];// update the larger interval aggregate from smaller sub intervals' aggregate
+    }
+}
+```
+
+
+### Range updates
+
+In order to do range updates, you need to do lazy propogation
+
+
+### Lazy propogation
+
+idea: don't go all the way to leaf nodes i.e. array nodes to update them.
+Instead update the intermediate/internal aggregate nodes and propogate the updates lazily.
 
 

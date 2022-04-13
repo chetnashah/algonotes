@@ -134,6 +134,38 @@ intervals are merged together to form larger intervals, starting from `[i,i]`
 
 ## Queries
 
+**Query always happens top-down with full segment-tree interval given which recursively asks smaller intervals**
+
+Base Case:
+1. Ignore disjoint intervals
+2. include matching intervals
+
+Non-base case (partially overlapping interval):
+1. break into child ranges and recursively get their sum and add.
+breaking into child ranges happens in two parts `[tl, tm]` and `[tm+1, tr]` 
+
+**Note** - picking l,r for child intervals is interesting.
+
+
+cases:
+get sum for a given interval range:
+```cpp
+int sum(int v, int tl, int tr, int l, int r) {
+    if (l > r) 
+        return 0;
+    if (l == tl && r == tr) {
+        return t[v];
+    }
+    int tm = (tl + tr) / 2;
+    return sum(v*2, tl, tm, l, min(r, tm))
+           + sum(v*2+1, tm+1, tr, max(l, tm+1), r);// note the min/max for picking l,r bounds
+}
+```
+
+Walkthrough:
+![Segment Tree sum 1](images/segment_tree_sum_1.jpg)
+![Segment tree sum 2](images/segment_tree_sum_2.jpg)
+
 ## Updates
 
 

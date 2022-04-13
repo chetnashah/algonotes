@@ -42,10 +42,7 @@ Think of mergesort like divide and conquer but using memory instead to store the
 
 ## Array Representation
 
-The tree is encoded as an array, **1-indexed**.
-The smallest ranges are index themselves i.e. `[i,i]`
-whenever n is not a power of two, not all levels of the Segment Tree will be completely filled.
-
+The tree is encoded as an array `st[]`(**1-indexed**) separate from original array.
 
 This simplifies the implementation a lot. We don't need to store the structure of the tree in memory. It is defined implicitly. We only need one array which contains the sums of all segments.
 
@@ -53,10 +50,10 @@ This simplifies the implementation a lot. We don't need to store the structure o
 ```cpp
 int n, st[4*MAXN];// 4n is upper bound on number of total vertices, 1-indexed
 ```
-The sum of the `root vertex at index 1`, 
-the sums of its two child vertices at indices 2 and 3, 
-the sums of the children of those two vertices at indices 4 to 7, and so on. 
-It is easy to see, that the left child of a vertex at index `2*i` is stored at index `2*i + 1`, and the right one at index .
+* The sum of the `root vertex at index 1`, 
+* the sums of its two child vertices at indices 2 and 3, 
+* the sums of the children of those two vertices at indices 4 to 7, and so on. 
+* It is easy to see, that the left child of a vertex at index `2*i` is stored at index `2*i + 1`, and the right one at index .
 
 ### Building segment tree - O(N)
 

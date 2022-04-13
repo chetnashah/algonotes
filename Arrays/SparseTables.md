@@ -45,7 +45,7 @@ precompute all answers for range queries with power of two length.
 
 Afterwards a different range query can be answered by splitting the range into ranges with power of two lengths, looking up the precomputed answers, and combining them to receive a complete answer.
 
-
+Takes more space than fenwick tree in order to save on query time
 
 ### Range combination function has to be associative -> Queries in log N
 
@@ -87,10 +87,8 @@ e,g cells where `j+2^i` overflows, those cells can be marked as invalid
 
 
 `min[a,b] = min(min[a, a+k-1], min[b-k+1, b])`
-where k = largest power of 2 that does not exceed `b-a+1`, i.e largest power of two less then range length.
-
-e.g.
-
+where k = largest power of 2 that does not exceed `b-a+1`, 
+i.e largest power of two less then range length.
 
 Minimum in index range 1 to 6 -
 `min[1,6] = min(min[1, 1+4-1], min[6-4+1, 6])`

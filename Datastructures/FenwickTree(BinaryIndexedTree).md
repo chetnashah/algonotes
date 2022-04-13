@@ -17,6 +17,8 @@ competitive programmer's handbook
 
 For sake of simplicity and understanding, assume `f` is sum function, i.e. we will look at range sum queries.
 
+**limitation** - min, max queries not supported (althought it might be possible using two fenwick trees)
+
 ## ADT
 
 1. `getSum(k)` :get sum in the range `[1,k]` inclusive. **Note** - You can do `getSum(l, r)` by doing `getSum(1, r) - getSum(1,l-1)`.

@@ -84,10 +84,10 @@ e,g cells where `j+2^i` overflows, those cells can be marked as invalid
 where k = largest power of 2 that does not exceed `b-a+1`, i.e largest power of two less then range length.
 
 e.g.
-| 1 | 3 | 4 | 8 | 6 | 1 | 4 | 2 |
-|---|---|---|---|---|---|---|---|
-| 1 | 3 | 4 | 6 | 1 | 1 | 2 | - |
-| 1 | 3 | 1 | 1 | 1 | - | - | - |
+| 1 | 3 | 4 | 8 | 6 | 1 | 4 | 2 | `min[j, j + 0 - 1]` = `min[j, j]` |
+|---|---|---|---|---|---|---|---| --- |
+| 1 | 3 | 4 | 6 | 1 | 1 | 2 | - | `min[j, j + 2 -1]` = `min[j, j+1]` |
+| 1 | 3 | 1 | 1 | 1 | - | - | - | `min[j, j + 4 -1]` = `min[j, j+3]` |
 
 
 Minimum in index range 1 to 6 -

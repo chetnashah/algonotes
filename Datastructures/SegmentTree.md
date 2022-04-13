@@ -33,10 +33,10 @@ Intermediate nodes for various intervals (to store metadata) to be used for rang
 Each internal tree node corresponds to a array-range whose size is power of two.
 `Fact` - any range `[a,b]` can be divided into `logN` ranges whose values are stoed in internal tree nodes.
 
-[Segment tree](images/segmenttree.png)
+![Segment tree](images/segmenttree.png)
 
 `updates`: for updates, we should update all the interval aggregates that might be affected which would be atmost O(log N).
-[Segment tree updates](images/segmenttreeupdate.png)
+![Segment tree updates](images/segmenttreeupdate.png)
 
 Think of mergesort like divide and conquer but using memory instead to store the halved range results.
 
@@ -109,7 +109,7 @@ Array:
 |---|---|---|---|---|----|---|----|---|---|
 
 Here is the recursive build-up:
-[Segment tree build](images/segmenttree_build.jpg)
+![Segment tree build](images/segmenttree_build.jpg)
 
 
 ## Non-array representation (AlgorithmsThread 3)

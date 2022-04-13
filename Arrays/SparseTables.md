@@ -86,8 +86,12 @@ where k = largest power of 2 that does not exceed `b-a+1`, i.e largest power of 
 e.g.
 | 1 | 3 | 4 | 8 | 6 | 1 | 4 | 2 |
 |---|---|---|---|---|---|---|---|
+| 1 | 3 | 4 | 6 | 1 | 1 | 2 | - |
+|---|---|---|---|---|---|---|---|
+| 1 | 3 | 1 | 1 | 1 | - | - | - |
+|---|---|---|---|---|---|---|---|
 
 
-
-` min[1,6] = min(min[1, 1+4-1], min[6-4+1, 6])`
+Minimum in index range 1 to 6 -
+`min[1,6] = min(min[1, 1+4-1], min[6-4+1, 6])`
 =`min(min[1,4], min[3,6])` // these should be available in the table.

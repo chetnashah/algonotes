@@ -150,6 +150,7 @@ breaking into child ranges happens in two parts `[tl, tm]` and `[tm+1, tr]`
 cases:
 get sum for a given interval range:
 ```cpp
+// initial call should have v = 1, tl = 0, tr = len(a) - 1
 int sum(int v, int tl, int tr, int l, int r) {
     if (l > r) 
         return 0;
@@ -160,6 +161,12 @@ int sum(int v, int tl, int tr, int l, int r) {
     return sum(v*2, tl, tm, l, min(r, tm))
            + sum(v*2+1, tm+1, tr, max(l, tm+1), r);// note the min/max for picking l,r bounds
 }
+
+// to get sum in range [0,0]
+sum(1, 0, len(arr) - 1, 0, 0);
+
+// to get sum in range [1, 4]
+sum(1, 0, len(arr) - 1, 1, 4)
 ```
 
 Walkthrough:

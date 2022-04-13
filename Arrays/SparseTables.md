@@ -8,9 +8,19 @@
 5. https://cp-algorithms.com/data_structures/sparse-table.html
 6. https://github.com/raywenderlich/swift-algorithm-club/tree/master/Sparse%20Table
 7. 
-### For Efficient range queries on static queries
+### For Efficient range queries on **static queries** (preferred for min/max)
 
-Static array i.e. array data does not change
+Static array i.e. array data does not change, for dynamic usecases prefer Segment tree.
+preferred for range min/max queries. One should prefer BIT/fenwick in case of range sum queries.
+
+sparse table can be applied to answer the range queries of any idempotent functions – that is, functions that can be applied multiple times without changing the result beyond the initial application.
+
+
+Examples of idempotent function:
+`minimum`, `maximum`, `GCD`, and `LCM` functions.
+floor, ceiling, absolute.
+
+**If any element in the array changes, the complete data structure has to be recomputed**
 
 ### Range Min query comparision
 
@@ -31,14 +41,11 @@ Static array i.e. array data does not change
 
 ### Core idea : breaking intervals via powers of two
 
-Known fact: Any positive integer can be represented as sum of powers of two
+precompute all answers for range queries with power of two length. 
 
-New fact:
-Any interval [l, r] can be broken down by breaking down `r - l` in powers of two
-`17 - 5 = 12 = 2^3 + 2^2`
-e.g.
-`[5,17] = [5, 5+2^3) + [5+2^3, 5+ 2^3 + 2^2) + [5 + 2^3 + 2^2 + 2^0, 5 + 2^3 + 2^2 + 2^0)`
-`[5,17] = [5, 13) + [13, 17) + [17, 18)`
+Afterwards a different range query can be answered by splitting the range into ranges with power of two lengths, looking up the precomputed answers, and combining them to receive a complete answer.
+
+
 
 ### Range combination function has to be associative -> Queries in log N
 
@@ -61,10 +68,10 @@ Not overlap friendly functions : `sum, mult` - double counting happens for overl
 Let `N` be size of input array.
 Biggest power of two possible, `P = floor(lg N)`
 
-2-d array table size :
-`N columns(numbered 0 to N-1), P+1 rows(numbered 0 to P)` ~ N x lgN 2-d array table
+2-d array table size : `N columns(numbered 0 to N-1), P+1 rows(numbered 0 to P)` ~ N x lgN 2-d array table
+
 1. fill first row with input values (all N original values)
-2. `cell[i,j] = [j, j+2^i) in original array`, where `i` is row index < P+1, and `j` is column index < N, note the end part is exclusive index -
+2. `cell[i,j] = fn[j, j+2^i - 1] inclusive in original array`, where `i` is row index < P+1, and `j` is column index < N.
 3. meaning of a value at `cell[i,j]` is summary/aggregate(E.g. min/max/sum) of all 2^i entries starting at index j. 
 
 cells with invalid intervals can be ignored
@@ -72,3 +79,12 @@ e,g cells where `j+2^i` overflows, those cells can be marked as invalid
 
 ### Satisfying Queries
 
+
+`min[a,b] = min(min[a, a+k-1], min[b-k+1, b])`
+where k = largest power of 2 that does not exceed `b-a+1`, i.e largest power of two less then range length.
+
+e.g.
+| 1 | 3 | 4 | 8 | 6 | 1 | 4 | 2 |
+
+` min[1,6] = min(min[1, 1+4-1], min[6-4+1, 6])`
+=`min(min[1,4], min[3,6])` // these should be available in the table.

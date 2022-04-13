@@ -1,4 +1,6 @@
 
+Also known as similar to `Interval tree`.
+
 ## Resources
 
 https://cp-algorithms.com/data_structures/segment_tree.html
@@ -12,4 +14,14 @@ https://codeforces.com/blog/entry/1256
 https://codeforces.com/blog/entry/18051
 https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/intervaltrees.pdf
 https://www.topcoder.com/thrive/articles/Range%20Minimum%20Query%20and%20Lowest%20Common%20Ancestor
+
+## Goal
+
+Range minimum Query.
+
+Other typical range queries:
+1. Range Min Query: minimum value in range `[a,b]`
+2. Range Sum Query: sum value in range `[a,b]`
+3. Range Max Query: maximum value in range `[a,b]`
+
 

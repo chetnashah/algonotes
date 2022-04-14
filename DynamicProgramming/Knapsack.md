@@ -3,11 +3,18 @@
 ## Given capacity N and a set K, maximize or count number of ways to fill N.
 
 There are 𝑁 items. The 𝑖-th item has weight 𝑤𝑖 and value 𝑣𝑖. 
-Find a set 𝑆 such that ∑𝑖∈𝑆 (𝑤𝑖≤𝐶) and ∑𝑖∈𝑆(𝑣𝑖) is maximized
+Find a set 𝑆 such that ∑𝑖∈𝑆 (𝑤𝑖≤𝐶) and ∑𝑖∈𝑆(𝑣𝑖) is maximized.
+
+Two variants:
+1. unbounded - same item can be picked any number of times
+2. bounded - each item can be picked exactly once.
 
 ## 0-1 knapsack
 
 you can either pick or ignore an item completely. No fractional stuff allowed.
+
+Base cases:
+1. you can always create a capacity of 0 by choosing no coins/items to fill the knapsack = 1 way
 
 ## Unbounded knapsack
 

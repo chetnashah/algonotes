@@ -4,6 +4,9 @@
 
 https://stackoverflow.com/questions/17246670/0-1-knapsack-dynamic-programming-optimization-from-2d-matrix-to-1d-matrix
 
+https://atcoder.jp/contests/dp/tasks
+
+
 ## Given capacity N and a set K, maximize or count number of ways to fill N.
 
 There are 𝑁 items. The 𝑖-th item has weight 𝑤𝑖 (positive) and value 𝑣𝑖. 
@@ -140,6 +143,13 @@ int main(){
     return 0;
 }
 ```
+
+## One dimensional 0-1 knapsack
+
+Outer items loop is same - 1 to N.
+Inner weights loop is reversed i.e. from W down to 0.
+
+
 
 ## Unbounded knapsack
 

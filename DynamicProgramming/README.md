@@ -15,6 +15,22 @@ Once we have a correct recursive algorithm, then we worry about speeding it up b
 4. Integer sequences.
 
 
+## Representation
+
+
+### 2D array representation
+If aware of problem/table size upfront,
+a 2-d array can be used.
+Tip: If using C++, memset the grid before starting tabulation e.g.
+```cpp
+int dp[100][1000];
+memset(dp, -1, sizeof(dp));// nitialize dp grid with -1
+```
+
+### Vector of vectors representation
+
+
+
 ## Try to come up with state
 
 Maybe 1d or 2d.

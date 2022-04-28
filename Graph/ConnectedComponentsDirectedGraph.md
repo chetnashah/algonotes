@@ -13,6 +13,8 @@ It is maximal subset of vertices C such that any two vertices of this subset are
 i.e for any u,v in C: 
 u -> v path exists, v -> u exists.
 
+In other words, for every vertex inside a component, is reachable from every other vertex within the same component.
+
 SCC partition a graph into disconnected partitions where each partition is a cycle.
 
 ![Strongly connected components](images/scc.PNG)

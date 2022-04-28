@@ -149,7 +149,21 @@ int main(){
 Outer items loop is same - 1 to N.
 Inner weights loop is reversed i.e. from W down to 0.
 
+`W` : Weight Array
 
+`V` : Value Array
+
+`K` : Capacity of knapsack
+
+`X[K]` : Array of size K to store your result. X[i] corresponds to maximum total value of items you can put in a knapsack of capacity i.
+
+Item `i` corresponds to weight `W[i]` and value `V[i]` for `1<=i<=n`
+```cpp
+for i from 1 to n
+    for j from K  down to (W[i] or 0)
+       X[j] = max(X[j],X[j-W[i]]+V[i])
+```
+Your required answer is simply `X[K]`.
 
 ## Unbounded knapsack
 

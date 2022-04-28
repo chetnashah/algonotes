@@ -16,3 +16,4 @@ https://www.youtube.com/watch?v=h_9WjWENWV8&list=PLWoMOTP6TgzLFi5fCmQBuRPb0WX4y_
 
 https://www.youtube.com/watch?v=gwlevtaC-u0&list=PLNGDluetGMofdL7Nkhbfl0UioNg_2tfCB&index=1
 
+https://www.scaler.com/topics/data-structures/

@@ -3,6 +3,8 @@
 
 https://web.stanford.edu/class/archive/cs/cs161/cs161.1138/lectures/03/Small03.pdf
 
+https://www.topcoder.com/thrive/articles/kosarajus-algorithm-for-strongly-connected-components
+
 
 
 ## Strongly connected component
@@ -12,6 +14,8 @@ i.e for any u,v in C:
 u -> v path exists, v -> u exists.
 
 SCC partition a graph into disconnected partitions where each partition is a cycle.
+
+![Strongly connected components](images/scc.PNG)
 
 ## Condensation graph
 

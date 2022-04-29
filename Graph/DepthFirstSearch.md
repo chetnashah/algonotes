@@ -11,6 +11,9 @@ Visits all vertexes once
 
 Also known as pre-order traversal ( a pre order traversal on a tree is its DFS)
 
+DFS can help you give a directed traversal tree out of an undirected graph that is traversed.
+
+
 ### Generates a traversal tree (of exploration done) as an end result
 
 ### States of vertices
@@ -65,7 +68,7 @@ void dfs(int u) {
 }
 ```
 
-### CLRS DFS version
+### CLRS DFS version - O(V+E)
 
 **Note** -
 1. does not do early return in recursion, instead relies on conditional recursion at the recursion call site
@@ -111,7 +114,7 @@ Cases when `v` is not visited:
 Cases when `v` is already visted:
 * `Back edge`: `EXPLORING -> EXPLORING`, contribute to cycles, points to ancestor that is already in EXPLORING state
 * `Forward edge`: `EXPLORING -> EXPLORED` and `entry[u] < entry[v]`
-* `Cross Edge`: `EXPLORIMG -> EXPLORED` and `entry[u] > entry[v]`
+* `Cross Edge`: `EXPLORING -> EXPLORED` and `entry[u] > entry[v]`
 
 ### Cycle finding in undirected graph (special case)
 
@@ -135,6 +138,24 @@ bool dfs(int u, int par) { // passing vertex and its parent vertex
     return false;
 }
 ```
+
+### dfs_num and dfs_low (cp4 book)
+
+`dfs_num(i)` - iteration number of the vertex as seen/discovery by dfs.
+
+`dfs_low(i)` - stores the lowest `dfs_num` 
+
+* When we are vertex u with v as its neighbour and `dfs_low(v) >= dfs_num(u)`, then `u` is clearly an articulation vertex. This is because `dfs_low(v)` is not smaller than `dfs
+
+### Articulation Point
+A vertex in graph G, whose removal(including removing all edges it has), disconnects G.
+
+### Bridge
+
+An edge in (undirected?) graph G whose removal (keeping all vertices as it is), removal of this edge disconnects G.
+
+* An edge is a bridge if and only if it is not contained in any cycle.
+* In a tree, every edge is a bridge because a tree has no cycles.
 
 ### Applications
 

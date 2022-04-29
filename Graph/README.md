@@ -53,3 +53,15 @@ e.g.
 }
 ```
 In c++, java it can be a Map where keys can be either int or string vertex-ids, and values would be a (dynamic)list of adjacent vertex-ids.
+
+## Terminologies
+
+### Articulation Point
+A vertex in graph G, whose removal(including removing all edges it has), disconnects G.
+
+### Bridge
+
+An edge in (undirected?) graph G whose removal (keeping all vertices as it is), removal of this edge disconnects G.
+
+* An edge is a bridge if and only if it is not contained in any cycle.
+* In a tree, every edge is a bridge because a tree has no cycles.

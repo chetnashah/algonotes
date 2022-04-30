@@ -65,3 +65,25 @@ An edge in (undirected?) graph G whose removal (keeping all vertices as it is), 
 
 * An edge is a bridge if and only if it is not contained in any cycle.
 * In a tree, every edge is a bridge because a tree has no cycles.
+
+## Transpose of a graph
+
+Transpose of a directed graph G is another directed graph on the same set of vertices with `all of the edges reversed`.
+
+## A simple test directed graph
+
+![Test graph](images/basicgraph.PNG)
+
+A nice directed test graph is following:
+```
+1 -> 2
+2 -> 3
+3 -> 4
+4 -> 2
+1 -> 4
+```
+
+It has three tree edges: `1->2, 2->3, 3->4`,
+It has one back edge: `4 -> 2`
+and one forward edge: `1 -> 4`
+

@@ -5,8 +5,8 @@ https://web.stanford.edu/class/archive/cs/cs161/cs161.1138/lectures/03/Small03.p
 
 https://www.topcoder.com/thrive/articles/kosarajus-algorithm-for-strongly-connected-components
 
-
-
+https://www.youtube.com/watch?v=Rs6DXyWpWrI
+https://www.youtube.com/watch?v=RpgcYiky7uw
 ## Strongly connected component
 
 It is maximal subset of vertices C such that any two vertices of this subset are reachable from each other. 
@@ -41,12 +41,21 @@ Intuitively a two layer structure:
 
 * SCCs of a graph form a partition of the nodes of a graph.
 
+* The first vertex to be discovered in any component is also the last one to be finished in that component.
 ## DFS based linear time algorithms
 
 ### Kosaraju's algorithm
 
 Two passes of DFS used.
+1st DFS on regular graph.
+Take transpose of the graph (i.e. reverse all edges).
+Second DFS on transpose of the graph.
 
+Why reverse edges?
+The SCCs won't be affected since even after edge reversal, every node inside an SCC is still reachable.
+
+reversal will also reverse the DAG edges of the SCC condensation graph.
+in one of the cases (either normal graph or transpose graph), we will not be able to go from one SCC to other via DFS, thus helping us segregate between SCCs.
 
 ### Tarjan's algorithm
 

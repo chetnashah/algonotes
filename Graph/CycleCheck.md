@@ -48,3 +48,10 @@ if (dfs_num[v] == EXPLORING):
     if(v != p[u]):
         print("non-trivial cycle")
 ```
+
+### Kahn's algorithm (directed graph)
+
+Indegree of nodes based algorithm.
+
+keep pulling out vertices with indegree 0 and remove their edges,
+if you ever hit a case where you cannot remove any nodes as all nodes have non-zero indegree, you have hit a cycle

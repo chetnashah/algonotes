@@ -31,4 +31,21 @@ Remove every edge, try DFS.
 Complexity - O(E * (V + E))
 
 
+## Main algorithm
+
+
+### Tree edge update logic after visit recursion
+
+```py
+# do this post recursive call
+dfs_low[u] = min(dfs_low[u], dfs_low[v])
+```
+
+### Non-trivial back edge update logic
+
+```py
+if (dfs_num[v] == EXPLORING and v != p[u]): # non-trivial backedge seen
+    dfs_low[u] = min(dfs_low[u], dfs_num[v])
+```
+
 

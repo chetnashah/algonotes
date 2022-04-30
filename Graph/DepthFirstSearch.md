@@ -131,7 +131,7 @@ bool dfs(int u, int par) { // passing vertex and its parent vertex
             cycle_start = v;
             return true;
         }
-        parent[v] = u;
+        parent[v] = u; // parent assignment happens before recurse
         if (dfs(v, parent[u]))// recurse, and if any level down you find a cycle, whole graph has a cycle
             return true;
     }

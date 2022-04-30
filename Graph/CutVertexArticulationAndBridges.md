@@ -33,19 +33,31 @@ Complexity - O(E * (V + E))
 
 ## Main algorithm
 
+For a dfs discovery from u to v,
 
+### Condition for cut-vertex/articulation point
+
+`if (dfs_low[v] >= dfs_num[u])` then `u` is an articulation vertex
+Think LV>=NU
+
+### Condition for cut-edge/bridge
+After tree edge recursion, within the if condition for tree edge, check following:
+`if (dfs_low[v] > dfs_num[u])` then `u->v` is an bridge/cut-edge.
+Think LV>NU 
 ### Tree edge update logic after visit recursion
 
+Idea: update lowlink after tree edge recursion finishes (we might have found a lower link from a deeper node somewhere)
 ```py
 # do this post recursive call
-dfs_low[u] = min(dfs_low[u], dfs_low[v])
+dfs_low[u] = min(dfs_low[u], dfs_low[v]) # checking low of v & u
 ```
 
 ### Non-trivial back edge update logic
 
+Idea: we found a back edge, which might have a lower num(discoverycounter), so update lowlink to reflect the same
 ```py
-if (dfs_num[v] == EXPLORING and v != p[u]): # non-trivial backedge seen
-    dfs_low[u] = min(dfs_low[u], dfs_num[v])
+if (dfs_num[v] == EXPLORING and v != p[u]): # non-trivial back-edge seen
+    dfs_low[u] = min(dfs_low[u], dfs_num[v]) # note the two different values/arrays in min
 ```
 
 

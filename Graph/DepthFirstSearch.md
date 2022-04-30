@@ -3,6 +3,7 @@
 ### Resources
 
 https://cp-algorithms.com/graph/finding-cycle.html
+https://codeforces.com/blog/entry/68138
 CLRS
 cp-book
 
@@ -24,7 +25,7 @@ Nodes can be in one of following states:
 
 ### Data structures needed
 
-1. visited array (tracks visited status) / Or use a color enum array for separate states
+1. visited array (tracks visited status) / Or use a color enum array for separate states.
 2. Auxillary array discovery start time
 3. Auxillary array discovery finish time
 4. Auxillary array parent pointers vertex id

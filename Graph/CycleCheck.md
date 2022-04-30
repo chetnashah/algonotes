@@ -11,8 +11,8 @@ def cycleCheck(u):
             # dfs tree edge, recurse
             p[v] = u # record parent before recursing
             cycleCheck(v)
-        elif (dfs_num[v] == EXPLORING):
-            if(v == p[u]):
+        elif (dfs_num[v] == EXPLORING): # back edge
+            if(v == p[u]): # immediate parent - trivial cycle
                 print("trivial back edge from u to v")
             elif (v != p[u]):
                 print("non-trivial back edge from u to v")

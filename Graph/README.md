@@ -1,5 +1,10 @@
 
 
+## Implicit graph
+
+Figure out the vertex set and edge set yourself.
+E.g. in a 2-d grid, cells are vertices and connection to the the 8 neighbouring cells would form edges.
+
 ## representations
 
 Note in each representation, getting a vertex adj list is constant time.
@@ -86,4 +91,15 @@ A nice directed test graph is following:
 It has three tree edges: `1->2, 2->3, 3->4`,
 It has one back edge: `4 -> 2`
 and one forward edge: `1 -> 4`
+
+## Edge contraction
+
+When you merge two nodes of an edge i.e. (u,v) into a single node uv, it is known as edge contraction.
+
+The neighbouring edges from uv will now be a union of 
+neighbors of `u` and neighbours of `v`.
+
+What if `u` and `v` have a common neighbour `w`, i.e `u<->w` and `v<->w`?
+In case of MST, have `uv<->w` as the new edge and keep min weight of the two edges `u<->w` and `v<->w`.
+
 

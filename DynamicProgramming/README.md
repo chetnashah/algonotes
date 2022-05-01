@@ -14,6 +14,9 @@ Once we have a correct recursive algorithm, then we worry about speeding it up b
 3. polygons.
 4. Integer sequences.
 
+## Optimal substructure
+
+Idea: Optimal solutions to problem incorporates optimal solutions to subproblem(s)
 
 ## Representation
 

@@ -6,6 +6,7 @@ https://stackoverflow.com/questions/17246670/0-1-knapsack-dynamic-programming-op
 
 https://atcoder.jp/contests/dp/tasks
 
+https://www.youtube.com/watch?v=U4O3SwDamA4
 
 ## Given capacity N and a set K, maximize or count number of ways to fill N.
 
@@ -24,6 +25,12 @@ Base cases:
 1. you can always create a capacity of 0 by choosing no coins/items to 
 fill the knapsack = 1 way
 
+### State shape
+
+`dp[i,w]` - `i` is the item being considered (goes from 0 to N-1 or 1 to N depending on indexing used), 
+`w` is the accumulated weight seen so far (goes from 0 to W inclusive).
+
+
 ### Grid size is weight + 1 (W+1) because we want to fill table for 0 .. W
 
 e.g.
@@ -40,10 +47,10 @@ Recursive knapsack (with memo):
 int N, W;
 long long dp[101][100001];// limits are N+1 x W+1, where N is no of items, W is possible weights
 
-// recursive knapsack
+// recursive knapsack, two dimensional recursion: itemIds increasing, weight decreasing
 long long solveDP(int itemId, int remW, std::vector<std::pair<int, int>>& items){
     // printf("itemId = %d remW = %d\n", itemId, remW);
-    // base case
+    // base case, for either dimension of recursion - items , weight capactiy
     if(itemId == N || remW <= 0) {
         return 0ll;
     }
@@ -54,7 +61,7 @@ long long solveDP(int itemId, int remW, std::vector<std::pair<int, int>>& items)
         return dp[itemId][remW];
     }
 
-    // case where cannot fit
+    // case where cannot fit, ignore this item and let the remaining items solve
     if(items[itemId].first > remW) {
         long long ans = solveDP(itemId+1, remW, items);
         dp[itemId][remW] = ans;
@@ -81,7 +88,7 @@ int main(){
         scanf("%d %d", &wi, &vi);
         items.push_back({ wi, vi});
     }
-    printf("%lld", solveDP(0, W, items));
+    printf("%lld", solveDP(0, W, items));// We could have done this as (0, 0, items), if our recursion state transition was adding weights instead of removing, and base case would have been total capacity check instead of less thn or equal to 0 remaining weight.
     return 0;
 }
 ```
@@ -144,26 +151,48 @@ int main(){
 }
 ```
 
-## One dimensional 0-1 knapsack
+## One dimensional 0-1 knapsack - O(n*S)
 
 Outer items loop is same - 1 to N.
 Inner weights loop is reversed i.e. from W down to 0.
 
-`W` : Weight Array
+`W` : Weight Array for items
+`V` : Value Array for items
 
-`V` : Value Array
+`S` : Total Capacity of knapsack
 
-`K` : Capacity of knapsack
+### State shape
 
-`X[K]` : Array of size K to store your result. X[i] corresponds to maximum total value of items you can put in a knapsack of capacity i.
-
-Item `i` corresponds to weight `W[i]` and value `V[i]` for `1<=i<=n`
+**`X[i]` corresponds to maximum total value of items you can put in a knapsack of capacity `i`**. i.e. only weight dimension. `i ranges from 0 to S`.
+### State transitions
 ```cpp
-for i from 1 to n
-    for j from K  down to (W[i] or 0)
-       X[j] = max(X[j],X[j-W[i]]+V[i])
+for i from 1 to n// consider item i one by one
+    for j from S down to W[i]// start from end wt capacity down to limit where we can jump by W[i] in left direction, note the reverse direction is important so that we do not consider ouselves twice in 0/1 knapsack.
+       dp[j] = max(dp[j],dp[j-W[i]]+V[i])// consider adding item i, and improving maximizing value
 ```
-Your required answer is simply `X[K]`.
+Your required answer is simply `dp[S]`.
+
+Example in cpp:
+```cpp
+int N, W;
+long long dp[100001];// W+1, W is possible weights
+// pair<int, int> is <wt, value>
+long long solveDP(std::vector<std::pair<int, int>>& items){
+    for(auto item: items) {
+        for(long long j = W; j >= item.first;j--) {
+            dp[j] = std::max(dp[j], dp[j-item.first] + item.second);
+        }
+    }
+    return dp[W];
+}
+```
+
+## 0/k knapsack
+
+Each item is allowed to be picked `k` times.
+
+Can be done in O(n*S).
+
 
 ## Unbounded knapsack
 
@@ -171,6 +200,12 @@ Repitition of picking of items is allowed
 
 There are 𝑁 items. The 𝑖-th item has weight 𝑤𝑖 and value 𝑣𝑖. 
 Find a multiset 𝑆 such that ∑𝑖∈𝑆 (𝑤𝑖≤𝐶) and ∑𝑖∈𝑆(𝑣𝑖) is maximized.
+
+### State shape
+`[i,w]` - `i` is the item being considered, and `w` is the weight accumulated so far.
+
+### State transitions
+
 
 ### Integer partition problem (Same as coin change ways)
 

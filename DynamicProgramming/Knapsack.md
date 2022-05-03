@@ -8,6 +8,9 @@ https://atcoder.jp/contests/dp/tasks
 
 https://www.youtube.com/watch?v=U4O3SwDamA4
 
+Survey of knapsack problems - http://www.algonotes.com/en/knapsacks/
+
+
 ## Given capacity N and a set K, maximize or count number of ways to fill N.
 
 There are 𝑁 items. The 𝑖-th item has weight 𝑤𝑖 (positive) and value 𝑣𝑖. 
@@ -163,7 +166,7 @@ Inner weights loop is reversed i.e. from W down to 0.
 
 ### State shape
 
-**`X[i]` corresponds to maximum total value of items you can put in a knapsack of capacity `i`**. i.e. only weight dimension. `i ranges from 0 to S`.
+**`X[i]` corresponds to maximum total value of items you can put in a knapsack of capacity/weight exactly `i`**. i.e. only weight dimension. `i ranges from 0 to S`.
 ### State transitions
 ```cpp
 for i from 1 to n// consider item i one by one
@@ -207,7 +210,42 @@ Find a multiset 𝑆 such that ∑𝑖∈𝑆 (𝑤𝑖≤𝐶) and ∑𝑖∈�
 ### State transitions
 
 
-### Integer partition problem (Same as coin change ways)
+## Knapsack variant - Large Weight-limit/Capacity i.e. 10^9 and smaller value gain per item e.g. 10^3
+
+Here is an example: https://atcoder.jp/contests/dp/tasks/dp_e
+
+Capacity limit might be upto 10^9, so `dp[10^9]` is not possible, so weight dimension is not a possibility.
+
+### State definition change to have value dimension (instead of weight)
+
+`dp[i]` = The minimum possible weight total for value exactly `i`.
+
+Answer would be given by iterating this array backwards, and finding the first total_wt that is less than or equalt to our capacity S. (You can also probably Binary search this answer).
+
+What should be the total size of dp?
+Ans: `[(n * maxValuePerItem)+1]`: This is because lets say each item has max value and each item is included, then we would have. extra 1 for 0 value. 
+
+Sample example:
+1 <= N <= 100 // 100 items
+1 <= W <= 10^9 // knapsack capacity
+1 <= wi <= W // indidvidual item weight
+1 <= vi <= 10^3 // individual item value
+
+Here dp size would be:
+`dp[100 * 10^3+1]` - holding min weight for each possible value i.
+### State transition logic
+
+since this is weight minimization, `min` function shall be used.
+
+jumps will be `v[i]` since dimension under consideration is value dimension.
+
+Base case `dp[0]` = min weight to have value of `0` = `0`.
+
+Since we are minimizing, inital amount in the `dp` array should be `INF` for all other indexes.
+
+
+
+## Integer partition problem (Same as coin change ways)
 
 Count no. of partitions e.g.
 no. partitions of 5 = 7

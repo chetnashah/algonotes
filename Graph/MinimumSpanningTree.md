@@ -81,7 +81,7 @@ There are two possible versions:
 2. `eager version` - has a relaxation/update step, this might require a indexed-priority-queue to do operations like decrease-key etc.
 
 ### Extra data structures needed
-* A min heap/min priority queue for edge/vertex selection of `<weight, vertexid>` starting with (0,Sourceid). The order is important because of how PriorityQueue would be doing comparision on, first item i.e. weight then breaking ties with second item i.e. vertex-id.
+* A min heap/min priority queue for edge/vertex selection of `<weight, vertexid>` starting with (0,Sourceid). The order is important because of how PriorityQueue would be doing comparision on, first item i.e. weight then breaking ties with second item i.e. vertex-id. **If putting a custom pair/struct in PQ, implement your own comparator which compares basis weight**
 * A visited/seen vector that represents the spanning tree vertices selected so far, so that we can avoid cycles
 
 ### Core algorithm (This version does not need any distance relaxation)

@@ -8,7 +8,10 @@ https://www.youtube.com/watch?v=9Wbej7Fy5Lw
 
 A linear ordering of vertices in a DAG so that vertex u comes before vertexv, if directed edge `u -> v` exists in the DAG.
 
-## Requirement: Directed graph
+Applications:
+A topo sort of vertices can help you do DP on graphs, going from vertices with least indegree to most indegree.
+
+## Requirement: Directed acyclic graph
 
 ## DFS based
 

@@ -6,8 +6,7 @@
 2. update a keyed entity - `update(k, v)`
 3. delete a keyed element - `delete(k)`
 
-But many algorithms need this functionality, hence IndexedPriorityQueue
-
+But many algorithms need this functionality (Prim's and Djikstra's), hence IndexedPriorityQueue.
 ## Another workaround instead of using indexed priority queues.
 
 Push multiple `<cost, element-id>` inside pq, so there might be stale pairs. 

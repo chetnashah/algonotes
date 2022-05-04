@@ -8,6 +8,11 @@
 
 But many algorithms need this functionality, hence IndexedPriorityQueue
 
+## Another workaround instead of using indexed priority queues.
+
+Push multiple `<cost, element-id>` inside pq, so there might be stale pairs. 
+Maintain a `processedElements[]` array of booleans, once processed an element, mark it as `processedElements[element-id] = true`, and you can ignore the less important pair when element-id shows comes up again while processing.
+
 ## Resources
 
 https://algs4.cs.princeton.edu/24pq/

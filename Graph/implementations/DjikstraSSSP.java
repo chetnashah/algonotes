@@ -5,7 +5,12 @@ import java.io.FileReader;
 import java.util.*;
 import java.io.File; 
 import java.io.*;
-
+/**
+ * Lazy version: 
+ * Here we do not need Indexed Priority queue, an henc there might be stale edges in PQ,
+ * which means multiple <cost,node> pairs where costs are different, but node is same.
+ * THis is ok, since we ignore already selected-set vertices.
+ */
 class EdgePair<A extends Comparable<A>,B extends Comparable<B>> implements Comparable<EdgePair<A,B>> {
     public A vertexid;
     public B weight;

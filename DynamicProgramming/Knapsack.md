@@ -237,13 +237,18 @@ Here dp size would be:
 
 since this is weight minimization, `min` function shall be used.
 
-jumps will be `v[i]` since dimension under consideration is value dimension.
+jumps will be `V[i]` since dimension under consideration is value dimension.
 
 Base case `dp[0]` = min weight to have value of `0` = `0`.
 
 Since we are minimizing, inital amount in the `dp` array should be `INF` for all other indexes.
 
-
+1-D space based iteration:
+```
+for item i is 1 to N:
+    for value j is N*MaxVPerItem - V[i] to 0: // start from right
+        dp[j+V[i]] = min(dp[j]+W[i], dp[j+V[i]]) 
+```
 
 ## Integer partition problem (Same as coin change ways)
 

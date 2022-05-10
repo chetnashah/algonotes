@@ -34,6 +34,20 @@ Combinatorial nature of problem.
 
 ## Recursive decomposition
 
+This is a classic case of **dp on sub-intervals**. In fact any time you have subproblems that involve same subintervals that show up again and again, dp can be used.
+
+```
+maxProfit([1, N]) -> max(maxProfit([1, N-1]) + p[N] , maxProfit([2,N])+p[1]) 
+```
+
+
+
+## State definition
+
+The state is a interval range `[L, R]`.
+
+## State transition
+
 
 
 ## Directionality in this problem

@@ -1,5 +1,8 @@
 /*
 // Definition for a Node.
+*/
+import java.util.*;
+
 class Node {
     public int val;
     public List<Node> neighbors;
@@ -16,7 +19,7 @@ class Node {
         neighbors = _neighbors;
     }
 }
-*/
+
 
 class Solution {
     public Set<Integer> visited = new HashSet<Integer>();

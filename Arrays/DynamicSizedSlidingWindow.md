@@ -1,4 +1,10 @@
 
+## Resources
+
+https://labuladong.gitbook.io/algo-en/iii.-algorithmic-thinking/slidingwindowtechnique
+
+##
+
 window size can vary continuously as we keep processing arr elements
 
 ### approach 1: both start and end pointers start from 0
@@ -30,6 +36,28 @@ N-k+1 windows of size k. (Refer to Arrays/FixedSizeSlidingWindow.md for this for
 
 Total number of windows:
 1 + 2 + 3 + .... + N = n * (n + 1)/2 = O(n ^ 2).
+
+## Template
+
+```cpp
+string s, t;
+// Looking for the "minimum substring" of t in s
+int left = 0, right = 0;
+string res = s;
+
+while(right < s.size()) {
+    window.add(s[right]);
+    right++;
+    // When we found a valid window, move left to find smaller window.
+    while (found a valid window) {
+        // If the window's substring is shorter, update the res
+        res = minLen(res, window);
+        window.remove(s[left]);
+        left++;
+    }
+}
+return res;
+```
 
 ### Application
 

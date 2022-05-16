@@ -6,7 +6,7 @@ https://leetcode.com/problems/construct-binary-search-tree-from-preorder-travers
 
 ## Traversal info needed
 
-**Inorder traversal is not enough**
+**Inorder traversal is not enough for a unique bst**
 
 Proof: Proof by contradiction: we can have multiple BSTs that give same 
 
@@ -19,7 +19,7 @@ All these have same in-order traversal: 1,2,3
    \                 /
     3               1
 ```
-**Preorder traversal** is enough.
+**Preorder traversal** is enough to get a unique BST.
 
 `2,1,3` - means `2` is the root, then 1 is left child to left of `2`, and `3` is right child to right of `2`. 
 
@@ -64,7 +64,7 @@ Base case, single node, i.e. single item array, return itself.
 
 ## Approach 2: Tree Construction on recursive iteration with bounds passed
 
-
+This is almost equivalent to bounded recursion (i.e. a backtracking with bounds via intervals) // TODO try to find the equivalence
 
 ```java
 /**
@@ -89,7 +89,7 @@ class Solution {
         return treeNodeCreateHelper(preorder, Integer.MIN_VALUE, Integer.MAX_VALUE);
     }
     
-    // build subtree rooted at rootIdx with given bounds
+    // build subtree rooted at rootIdx with given bounds, returning null if it cannot be created within bounds
     public TreeNode treeNodeCreateHelper(int[] preorder, int lower_bound, int upper_bound) {
         System.out.println("rootIdx = " + rootIdx + " left_bound = " + lower_bound + " upper_bound = " + upper_bound);
         if(rootIdx == preorder.length) {
@@ -97,15 +97,18 @@ class Solution {
         }
         int root = preorder[rootIdx];// capture root node for current index, points to current item to be considered
         
-        if(root < lower_bound || root > upper_bound) { // early return on bounds, no point looking to insert in this interval
+        // root inspection against parent enforced bounds
+        // early return on bounds, no point looking to insert in this interval
+        // place null and let the remaining backtrack happen in the callstack
+        if(root < lower_bound || root > upper_bound) { 
             return null;
         }
         
-        // note this sequence is important
+        // Now it is ok to place node given parent enforced bounds
         // we can place node, since bounds are fine, so increment and consider as done
         ++rootIdx; // shared ref, we increment to next item before left/right tree creation
         
-        // we create children before create root, attach them
+        // we create children before create root (while giving them bound restrictions) - 
         // we give rootIdx to be correctly be placed in both lower, greater intervals,
         // if they will be within bounds, they will be picked up or else return null
         // we try placing in left child first because that is how preorder traversal is created.
@@ -113,10 +116,13 @@ class Solution {
         // if left tree could not place it, placement chance is given to right tree with bounds
         TreeNode rightTree = treeNodeCreateHelper(preorder, root, upper_bound);
         
+        // note how root inspection happens before child/subtree recursion, but root creation happens after child creation
         return new TreeNode(root, leftTree, rightTree);
     }
 }
 ```
+
+**Note** - here even just using the upper bound is enough due to BST property, increasing towards right and we move our iteration from left to right.
 
 ## O(N) approach but with stack
 

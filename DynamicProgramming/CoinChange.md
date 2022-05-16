@@ -35,6 +35,10 @@ int solve(int x) {
 
 ## constructing solution
 
-# variant 2 - count number of ways(ordering matters)
+# variant 2 - count number of ways(ordering matters), each coin be picked any number of times?
 
-# variant 3 - count number of ways (ordering does not matter)
+# variant 2 - count number of ways(ordering matters), each coin be picked once
+
+# variant 3 - count number of ways (ordering does not matter), each coin can be picked any number of times
+
+# variant 3 - count number of ways (ordering does not matter), each coin can be picked once

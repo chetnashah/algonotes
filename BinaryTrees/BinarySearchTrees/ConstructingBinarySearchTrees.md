@@ -116,7 +116,6 @@ class Solution {
         // if left tree could not place it, placement chance is given to right tree with bounds
         TreeNode rightTree = treeNodeCreateHelper(preorder, root, upper_bound);
         
-        // note how root inspection happens before child/subtree recursion, but root creation happens after child creation
         return new TreeNode(root, leftTree, rightTree);
     }
 }

@@ -522,3 +522,56 @@ Dequeue operation returns: 2
 </tr>
 
 </table>
+
+### Code
+
+```java
+class MyQueue {
+
+    Stack<Integer> st1;
+    Stack<Integer> st2;
+    public MyQueue() {
+        st1 = new Stack<>();
+        st2 = new Stack<>();
+    }
+    
+    public void push(int x) { // enqueue is trivial, push to st1
+        st1.push(x);
+    }
+    
+    public int pop() {
+      if(st2.isEmpty()) { // case st2 is empty, move elements to st2 first
+          moveElementsToS2();
+      }
+      return st2.pop(); // pop from top of st2
+    }
+    
+    public int peek() {
+        int ret;
+        if(st2.empty()) {// case st2 is empty, move elements to st2 first
+            moveElementsToS2();
+        }
+        return st2.peek();
+    }
+    
+    private void moveElementsToS2(){
+        // we come here only when there is stuff in st1, but st2 is empty
+        while(!st1.isEmpty()) {// empty st1 
+            st2.push(st1.pop());// move those items to st2
+        }
+    }
+    
+    public boolean empty() {
+        return st1.size() == 0 && st2.size() == 0; 
+    }
+}
+
+/**
+ * Your MyQueue object will be instantiated and called as such:
+ * MyQueue obj = new MyQueue();
+ * obj.push(x);
+ * int param_2 = obj.pop();
+ * int param_3 = obj.peek();
+ * boolean param_4 = obj.empty();
+ */
+```

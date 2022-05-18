@@ -14,14 +14,18 @@
 <table>
 <tr>
 <td>
+
 stack1:
 | 1 |
 | --- |
+
 </td>
 <td>
+
 stack2:
 ||
 | --- |
+
 </td>
 </tr>
 </table>
@@ -31,14 +35,18 @@ stack2:
 <table>
 <tr>
 <td>
+
 stack1:
 | 1 | 2 |
 | --- | --- |
+
 </td>
 <td>
+
 stack2:
 ||
 | --- |
+
 </td>
 </tr>
 </table>
@@ -48,15 +56,19 @@ stack2:
 <table>
 <tr>
 <td>
+
 stack1:
 | 1 | 2 | 3 |
 | --- | --- | --- |
+
 </td>
 
 <td>
+
 stack2:
 ||
 | --- |
+
 </td>
 </tr>
 </table>
@@ -66,14 +78,18 @@ stack2:
 <table>
 <tr>
 <td>
+
 stack1:
 | 1 | 2 | 3 |
 | --- | --- | --- |
+
 </td>
 <td>
+
 stack2:
 ||
 |---|
+
 </td>
 <td>
 initial state
@@ -82,14 +98,18 @@ initial state
 
 <tr>
 <td>
+
 stack1:
 | 1 | 2 |
 | --- | --- |
+
 </td>
 <td>
+
 stack2:
 | 3 |
 | --- |
+
 </td>
 <td>
 pop from st1, push to st2
@@ -98,14 +118,18 @@ pop from st1, push to st2
 
 <tr>
 <td>
+
 stack1:
 | 1 |
 | --- |
+
 </td>
 <td>
+
 stack2:
 | 3 | 2 |
 | --- | --- |
+
 </td>
 <td>
 pop from st1, push to st2
@@ -114,15 +138,19 @@ pop from st1, push to st2
 
 <tr>
 <td>
+
 stack1:
 | | 
 | --- |
+
 </td>
 
 <td>
+
 stack2:
 | 3 | 2 | 1 |
 | --- | --- | --- |
+
 </td>
 <td>
 pop from st1, push to st2,
@@ -134,14 +162,18 @@ to return dequued element, pop from top of stack2: `1`
 
 <tr>
 <td>
+
 stack1:
 | |
 | --- |
+
 </td>
 <td>
+
 stack2:
 | 3 | 2 |
 | --- | --- |
+
 </td>
 <td>
 1 returned
@@ -151,14 +183,18 @@ stack2:
 
 <tr>
 <td>
+
 stack1:
 | 2 |
 | --- |
+
 </td>
 <td>
+
 stack2:
 | 3 |
 | --- |
+
 </td>
 <td>
 moving items back to st1
@@ -167,15 +203,19 @@ moving items back to st1
 
 <tr>
 <td>
+
 stack1:
 | 2 | 3 |
 | --- | --- |
+
 </td>
 
 <td>
+
 stack2:
 | |
 | --- |
+
 </td>
 <td>
 We are done when st2 is empty
@@ -190,14 +230,18 @@ We are done when st2 is empty
 <table>
 <tr>
 <td>
+
 stack1:
 | 2 | 3 | 9 |
-| --- | --- | --- |
+| -- | -- | -- |
+
 </td>
 <td>
+
 stack2:
 ||
-| --- |
+| -- |
+
 </td>
 </tr>
 </table>

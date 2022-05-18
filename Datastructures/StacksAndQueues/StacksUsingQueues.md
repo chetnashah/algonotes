@@ -47,7 +47,8 @@ stack2:
 ||
 |---|
 
-----
+|
+v
 
 stack1:
 | 1 | 2 |
@@ -57,7 +58,8 @@ stack2:
 | 3 |
 | --- |
 
----
+|
+v
 
 stack1:
 | 1 |
@@ -67,7 +69,8 @@ stack2:
 | 3 | 2 |
 | --- | --- |
 
----
+|
+v
 
 stack1:
 | | 
@@ -77,7 +80,8 @@ stack2:
 | 3 | 2 | 1 |
 | --- | --- | --- |
 
-----
+|
+v
 
 to return dequued element,pop from top of stack2: `1`
 
@@ -91,7 +95,9 @@ stack2:
 
 1 returned
 
---- 
+|
+v
+
 now move all items back to stack1
 
 stack1:
@@ -102,7 +108,8 @@ stack2:
 | 3 |
 | --- |
 
----
+|
+v
 
 stack1:
 | 2 | 3 |
@@ -123,11 +130,7 @@ stack2:
 | --- |
 
 
-
-
-
-
-
+### Code
 
 ```java
   public static class Queue {

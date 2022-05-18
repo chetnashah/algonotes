@@ -60,3 +60,28 @@ Stack:
 24 | 10             // next greater element of 10 is 24
 24 | 10 | 3         // next greater element of 3 is 10
 24 | 10 | 3 | 1     // next greater element of 1 is 3
+
+## Variant: next greater with a circular array (you can wrap around to find next greater)
+
+one approach: copy all elements except last and append them to original and find 
+next greater for first N elements
+        
+
+improvement: instead of copying the array and appending it, use (i % n) as index to get elements
+starting from i = (2n-1 % n) down to 0
+managing a monotonic decreasing stack
+
+```java
+    public int[] nextGreaterElements(int[] nums) {
+        int[] res = new int[nums.length];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 2 * nums.length - 1; i >= 0; --i) {
+            while (!stack.empty() && nums[stack.peek()] <= nums[i % nums.length]) {
+                stack.pop();
+            }
+            res[i % nums.length] = stack.empty() ? -1 : nums[stack.peek()];
+            stack.push(i % nums.length);
+        }
+        return res;
+    }
+```

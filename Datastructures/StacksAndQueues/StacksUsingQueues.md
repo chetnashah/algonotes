@@ -4,131 +4,203 @@
 
 `Core idea`: 
 
-Push operation: keep pushing items on first stack1
-Deque Operation: move all the items to second stack2, now the top element on second stack2 is actally front of queue(that should be dequeued), so pop and return it, re-arrange the remaining items back to stack1.
+`Push operation`: keep pushing items on first stack1.
+
+
+`Deque Operation`: move all the items to second stack2, now the top element on second stack2 is actally front of queue(that should be dequeued), so pop and return it, re-arrange the remaining items back to stack1.
 
 #### Push 1
 
+<table>
+<tr>
+<td>
 stack1:
 | 1 |
 | --- |
-
+</td>
+<td>
 stack2:
 ||
 | --- |
-
+</td>
+</tr>
+</table>
 
 #### Push 2
 
+<table>
+<tr>
+<td>
 stack1:
 | 1 | 2 |
 | --- | --- |
-
+</td>
+<td>
 stack2:
 ||
 | --- |
+</td>
+</tr>
+</table>
 
 #### Push 3
+
+<table>
+<tr>
+<td>
 stack1:
 | 1 | 2 | 3 |
 | --- | --- | --- |
+</td>
 
+<td>
 stack2:
 ||
 | --- |
+</td>
+</tr>
+</table>
 
 ### Deque()
 
+<table>
+<tr>
+<td>
 stack1:
 | 1 | 2 | 3 |
 | --- | --- | --- |
-
+</td>
+<td>
 stack2:
 ||
 |---|
+</td>
+<td>
+initial state
+</td>
+</tr>
 
-|
-v
-
+<tr>
+<td>
 stack1:
 | 1 | 2 |
 | --- | --- |
-
+</td>
+<td>
 stack2:
 | 3 |
 | --- |
+</td>
+<td>
+pop from st1, push to st2
+</td>
+</tr>
 
-|
-v
-
+<tr>
+<td>
 stack1:
 | 1 |
 | --- |
-
+</td>
+<td>
 stack2:
 | 3 | 2 |
 | --- | --- |
+</td>
+<td>
+pop from st1, push to st2
+</td>
+</tr>
 
-|
-v
-
+<tr>
+<td>
 stack1:
 | | 
 | --- |
+</td>
 
+<td>
 stack2:
 | 3 | 2 | 1 |
 | --- | --- | --- |
+</td>
+<td>
+pop from st1, push to st2,
+st1 now empty,
+to return dequued element, pop from top of stack2: `1`
+</td>
+</tr>
 
-|
-v
 
-to return dequued element,pop from top of stack2: `1`
-
+<tr>
+<td>
 stack1:
 | |
 | --- |
-
+</td>
+<td>
 stack2:
 | 3 | 2 |
 | --- | --- |
-
+</td>
+<td>
 1 returned
+</td>
+</tr>
 
-|
-v
 
-now move all items back to stack1
-
+<tr>
+<td>
 stack1:
 | 2 |
 | --- |
-
+</td>
+<td>
 stack2:
 | 3 |
 | --- |
+</td>
+<td>
+moving items back to st1
+</td>
+</tr>
 
-|
-v
-
+<tr>
+<td>
 stack1:
 | 2 | 3 |
 | --- | --- |
+</td>
 
+<td>
 stack2:
 | |
 | --- |
+</td>
+<td>
+We are done when st2 is empty
+</td>
+</tr>
+
+</table>
+
 
 #### push 9
 
+<table>
+<tr>
+<td>
 stack1:
 | 2 | 3 | 9 |
 | --- | --- | --- |
-
+</td>
+<td>
 stack2:
 ||
 | --- |
-
+</td>
+</tr>
+</table>
 
 ### Code
 

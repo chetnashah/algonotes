@@ -176,7 +176,7 @@ stack2:
 
 </td>
 <td>
-1 returned
+**dequeu operation** 1 returned
 </td>
 </tr>
 
@@ -269,20 +269,7 @@ stack2:
   }
 ```
 
-## Another
+## Better amortized O(1) approach - 
 
-<table>
-<tr><th>Table 1 Heading 1 </th><th>Table 1 Heading 2</th></tr>
-<tr><td>
+Amortized means single approach might take O(1) but n operations will take O(n).
 
-|Table 1| Middle | Table 2|
-|--|--|--|
-|a| not b|and c |
-
-</td><td>
-
-|b|1|2|3| 
-|--|--|--|--|
-|a|s|d|f|
-
-</td></tr> </table>

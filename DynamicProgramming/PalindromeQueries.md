@@ -9,6 +9,8 @@
 wE fill the dp table from left to right, inner loop from top to bottom.
 we consult palindrome result saved for smaller strings to consult larger strings that are palindromes
 
+![palindrome dp](images/palindromedp.jpg)
+
 ## Code
 
 ```java
@@ -39,14 +41,16 @@ public class Main {
 			for(int j=0;j<i;j++) { // j is the row num per col
 				boolean firstLastSameChar = (charArray[j] == charArray[i]);
 
-				if(dp[j][i] == 1) continue;
+				if(dp[j][i] == 1) continue; // same string is palindrome
 				if(j+1 == i && firstLastSameChar) { // adjacent, 2 char strings
 					dp[j][i] = 1;
 					continue;
 				}
 				// more than 2char strings, we have middle to check
-				int prev1 = dp[j+1][i-1];
-				if(prev1 == 1 && firstLastSameChar) {
+                // j....i
+                //  ^  ^
+				int middlePalindrome = dp[j+1][i-1];
+				if(middlePalindrome == 1 && firstLastSameChar) {
 					dp[j][i] = 1;
 				}
 			}

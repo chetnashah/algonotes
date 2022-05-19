@@ -1,6 +1,7 @@
 
 Useful for common prefix finding.
-Also known as prefix tree
+Also known as prefix tree/trie.
+A `prefix` string is basically a substring of original string that includes the first charachter.
 Trie is basically a tree with Sigma branches, where Sigma is the cardinality of alphabet.
 
 ### Why not other data structures?
@@ -20,6 +21,9 @@ Can be represented by
 1. array - an array of sigma pointers (can be null or point to other nodes), space O(T.Sigma), query = O(P). Charechters are implicitly defined by link index.
 2. tree - 
 3. hashtable - 
+
+**Note** nodes typically dont have identity/values, it is the edges/references offset that are important to be tracked (which implicitly represent trie edges).
+Nodes might have terminal state that must be tracked.
 
 ### Topcoder tutorial representation
 
@@ -47,14 +51,19 @@ class TrieNode {
 
 ### Errichto tutorial representation
 
-2-d array based representation,
+2-d array based representation, `int nxt[N][A]` where `N` are nodeids and `A` is size of alphabet.
 first index is nodeId, second index is char int value that matches,
 and the overall value points to next node id.
+
+i.e `nxt[nodeId][edgeChar] = ++N`, note nodes are for convinience, edgeChar matter as they form actual strings.
+The tree is rooted at `nodeId = 0;`
+Note if `nxt[nodeId][edgeChar] == 0` means that edgeChar does not exist at that nodeId.
 
 ```cpp
 int root =0;
 bool isTerminal[100000];// index is node-id
 int nxt[100000][26];// first index is node-id
+// or int nxt[N][A] where N is number of nodes, and A is size of alphabet
 
 addWords(vector<string> words) {
     int N = 0;// node-id generation
@@ -62,7 +71,7 @@ addWords(vector<string> words) {
         int node = 0; // adding of any new word starts from 0
         for (char c: s) {
             if(nxt[node][c-'a'] == 0) {
-                nxt[node][c-'a'] = ++N;
+                nxt[node][c-'a'] = ++N;// create nodeID if does not exist via edge pointing
             }
             node = nxt[node][c-'a'];// linkelist like next pointer manipulation
         }
@@ -78,6 +87,10 @@ addWords(vector<string> words) {
 struct TrieNode{
     map<char, TrieNode> children;
     boolean endOfWord;
+
+    TrieNode getNext(char c) {
+        return children[c-'a'];
+    }
 }
 root = new TrieNode();
 ```
@@ -101,6 +114,10 @@ class TrieNode {
 class TrieNode {
     HashMap<Charachter, TrieNode> children;
     boolean isCompleteEnd;
+
+    public TrieNode getNext(char c) {
+        return children[c - 'a'];
+    }
 }
 ```
 

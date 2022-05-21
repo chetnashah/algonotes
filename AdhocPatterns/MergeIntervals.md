@@ -67,6 +67,21 @@ Keeping a separate array/vector for mergedIntervals is fine and helps in clarity
 e.g. `for interval in intervals:`, because you will not have access to next or previous intervals that way,
 instead do index based iteration on the original list
 
+Preprocess step befoe while loop:
+```py
+  # pre process first one
+  intervals.sort(key=lambda x: x.start)
+  
+  # pre process for first interval needed.
+  start = intervals[0].start
+  end = intervals[0].end
+```
+
+And then checking remaining intervals:
+```py
+  for i in range(1, len(intervals)):
+```
+
 ### when to push to `mergedIntervals` array?
 
 Only push to mergedIntervals array only when you see the newest interval start greater than past intervals end combined.
@@ -92,7 +107,7 @@ def merge(intervals):
   start = intervals[0].start
   end = intervals[0].end
 
-  # TODO: Write your code here
+  # check remaining intervals
   for i in range(1, len(intervals)):
     if(intervals[i].start > end):
       merged.append(Interval(start,end))

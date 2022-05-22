@@ -20,3 +20,28 @@ And the moment we notice that such a connection has already been created, delete
 ## Animation
 
 ![animation](images/morristraversalanimation.gif)
+
+## Code
+
+```py
+def MorrisTraversal(root):
+    # Set cursor to root of binary tree
+    cursor = root
+    while cursor is not None:
+        if cursor.left is None:
+            print(cursor.value)
+            cursor = cursor.right
+        else:
+            # Find the inorder predecessor of cursor
+            pre = cursor.left
+            while True:
+                if pre.right is None:
+                    pre.right = cursor
+                    cursor = cursor.left
+                    break
+                if pre.right is cursor:
+                    pre.right = None
+                    cursor = cursor.right
+                    break
+                pre = pre.right
+```

@@ -9,6 +9,11 @@ I applied simple recursive DFS with passing col+1,-1 for right and left child,
 but there is an edge case that i missed:
 
 some deep left leaf of right root subtree, can enter/show up in column of left root subtree.
+**In essence depth is also important to maintain, in a single column**
+
+Here is an edge case:
+Here DFS code will process and append 2 before 8, bcoz it appears in left subtree.
+![verticaltravesal](images/verticaltraversal.png)
 
 ## My follow up approach
 

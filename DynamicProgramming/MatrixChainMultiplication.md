@@ -46,6 +46,8 @@ We will be filling upper right dp triangle
 For dp to work, all entries to left and bottom of a given cell, have to be filled first.
 
 For filling each item of cell, we refer to all entries to the left and bottom of that cell. -> This contributes extra O(N) per cell, thus leading to overall O(N^3) complexity
+
+This table filling technique is useful when we want all left/bottom entries filled before we can calculate current cell.
 ![diagonal dp filling](images/diagonaldpfilling.png)
 
 ### Recurrence

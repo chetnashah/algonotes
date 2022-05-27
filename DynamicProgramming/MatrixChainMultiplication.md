@@ -33,6 +33,40 @@ create a `dp[N][N]` table.
 subproblem: If I have a answer for a smaller matrix chain e.g. i..j, 
 i.e. `dp[i][j] = min mults needed to multiply all matrices from ith matrix to jth matrix, i <= j`
 
+This is basically `DP on sub ranges` - **The base case is single elements on diagonal are trivial ranges `dp[i][i]`, and final answer is full range i.e. upper right corner of dp table dp[0][n]**
+
 ### Base cases are diagonal elements i.e. dp[i][i] represents ith matrix in chain
 
+`dp[i][i] = 0`
+No multiplications needed for the single matrix
+
+### Dp table filling 
+
+We will be filling upper right dp triangle
+For dp to work, all entries to left and bottom of a given cell, have to be filled first.
+
+For filling each item of cell, we refer to all entries to the left and bottom of that cell. -> This contributes extra O(N) per cell, thus leading to overall O(N^3) complexity
+![diagonal dp filling](images/diagonaldpfilling.png)
+
+### Recurrence
+
+`given x<=y`,
+`dp[x][y] = min(dp[x][k] + dp[k+1][y]) +dim(x*k+1*y+1) for all k in x..y-1`
+
+For diagram shown above, as noticed fill bottom and left entries first, and calculate new values based on it.
+```
+for l = N to 0:     // for each row num starting from bottom to top
+    for r = l to N: // for each column from left to right for given row
+        for k in l..r: // for all k possible splits of l..r
+            dp[l][r] = min_over_all_k(dp[l][k] + dp[k][r] + xyz)
+
+            dp[l][k] <-- because r>k -- dp[l][r]
+                                            |
+                                        because k>l
+                                            |
+                                            v
+                                        dp[k][r]
+```
+
+### final ans is dp[1][n]
 

@@ -33,3 +33,6 @@ create a `dp[N][N]` table.
 subproblem: If I have a answer for a smaller matrix chain e.g. i..j, 
 i.e. `dp[i][j] = min mults needed to multiply all matrices from ith matrix to jth matrix, i <= j`
 
+### Base cases are diagonal elements i.e. dp[i][i] represents ith matrix in chain
+
+

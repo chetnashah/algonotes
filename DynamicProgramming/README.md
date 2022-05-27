@@ -47,3 +47,41 @@ recurrence will help to transition between states.
 
 ## Memoize solved problems
 
+## Two-D dp[i][j]
+
+For a `dp[i][j]`:
+`i <= j` represents: upper right triangle in dp table
+`i >= j` represents: lower right triangle in dp table
+and `dp[i][i]` represents the diagonal in the dp table
+
+### Filling upper right dp table : row by row
+i will rpresent row, j will represent column
+```
+for i = 0 to N: // for each row i
+    for j = i to N: // for each element in row i after i to end
+        dp[i][j] = 
+
+```
+### Filling lower right dp table, row by row 
+i will represent row, j will represent column
+```
+for i = 0 to N: // for each row i
+    for j= 0 to i: // for each element in row i from start to i
+        dp[i][j] ... 
+```
+
+### Filling upper right dp table: column by comumn
+i will represent column no, j will represent row
+```
+for i=0 to N:// for each column
+    for j= 0 to i: // for each element in column i from top to i
+        dp[j][i] = ...
+```
+
+### Filling lower right dp table: column by column
+i will represent column no, j will represent row
+```
+for i=0 to N: // for each column
+    for j=i to N: // for each element in column i below i to end
+        dp[j][i] == ...
+```

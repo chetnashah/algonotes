@@ -85,3 +85,14 @@ for i=0 to N: // for each column
     for j=i to N: // for each element in column i below i to end
         dp[j][i] == ...
 ```
+
+### Filling upper right dp table diagonal by diagonal
+
+```
+for i=0 to N:
+    int c=i,r=0; // for all diagonals starting from col i
+    while(c < N) {
+        dp[r][c] = ...
+        r++;c++;// go diagonally
+    }
+```

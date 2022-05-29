@@ -72,3 +72,6 @@ for l = N to 0:     // for each row num starting from bottom to top
 
 ### final ans is dp[1][n]
 
+## Variant
+
+https://www.spoj.com/problems/MIXTURES/

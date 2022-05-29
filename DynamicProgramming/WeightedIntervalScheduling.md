@@ -89,17 +89,18 @@ class Solution {
     public int jobScheduling(int[] startTime, int[] endTime, int[] profit) {
         int N = startTime.length;
         int[] prev = new int[N];
-        IntervalPair[] allIntervals = new IntervalPair[N];
+        IntervalPair[] allIntervals = new IntervalPair[N];// intervals are stored 0 index
         for(int i = 0; i< N; i++) {
             allIntervals[i] = new IntervalPair(startTime[i], endTime[i], profit[i]);
         }
         
+        // sorting by finish time
         Arrays.sort(allIntervals, (o1,  o2) -> Integer.compare(o1.end, o2.end));
         computePrevCompatible(prev, allIntervals);
         // System.out.println(Arrays.toString(prev));
         
         int[] dp = new int[N];
-        dp[0] = allIntervals[0].profit;
+        dp[0] = allIntervals[0].profit;// base case
         for(int i=1;i<N;i++) {
             // either dont pick ith interval, or pick ith -> profit + get best soln of prev compatible intervals
             dp[i] = Math.max(dp[i-1], allIntervals[i].profit + ((prev[i] == -1) ? 0 : dp[prev[i]]));
@@ -110,7 +111,7 @@ class Solution {
     
     public void computePrevCompatible(int[] prev, IntervalPair[] allIntervals) {
         for(int i=0;i<prev.length;i++) {
-            prev[i] = -1;// no compatible index
+            prev[i] = -1;// -1 -> no compatible index, this is because intervals are 0 indexed
         }
         for(int i = 1; i < prev.length; i++) {
             for(int j = i-1; j >= 0; j--) {

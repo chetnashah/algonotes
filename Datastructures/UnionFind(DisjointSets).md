@@ -64,7 +64,7 @@ makeSet(int x) {
     parent[x] = x;
 }
 
-// mutative method, does path compression while finding the root
+// mutative recursive method, does path compression while finding the root
 int find(int x){
     int parX = (parent[x] == x ? x : find(parent[x]));// note the recursion
     parent[x] = parX;// update by path compression, happens by assignment when returning from recursion
@@ -88,3 +88,24 @@ Amortized logarithmic/constant time?
 3. Undirected graph connected components
 4. LCA in trees
 5. Unification (https://en.wikipedia.org/wiki/Unification_(computer_science))
+
+## Code DSU as a data structure
+
+```java
+class DSU {
+    int[] parent;
+    public DSU(int N) {
+        parent = new int[N];
+        for (int i = 0; i < N; ++i)
+            parent[i] = i;
+    }
+    public int find(int x) {
+        if (parent[x] != x) parent[x] = find(parent[x]);
+        return parent[x];
+    }
+    public void union(int x, int y) {
+        parent[find(x)] = find(y);
+    }
+}
+```
+

@@ -31,7 +31,7 @@ even sized array:
 | --- | --- | --- | --- |
 | | | mid | |
 
-### `mid = (hi - lo)/2`, where `hi = 0` and `lo = lst.length - 1` are index of first and last element
+### `mid = (hi - lo)/2`, where `lo = 0` and `hi = lst.length - 1` are index of first and last element
 
 `mid = (hi - lo)/2`: **It picks the lower median index** 
 

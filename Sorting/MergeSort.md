@@ -15,6 +15,7 @@
 ### In MergeSort function, create two new subarrays and pass them to merge fn
 
 Basecase sits here in mergeSort function.
+This can be also done in a different way, pass lo/hi bounds in the signature.
 
 ```java
 	private int[] mergeSort(int[] input){

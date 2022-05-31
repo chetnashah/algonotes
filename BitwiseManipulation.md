@@ -67,3 +67,20 @@ k = x & (x + 1)
 # (14) -> (1110) -> (1110)
 # (15) -> (1111) -> (0000)
 ```
+
+## Java `Integer` utilities
+
+### Lowest set bit
+
+`public static int lowestOneBit(int i)`
+Returns an int value with at most a single one-bit, in the position of the lowest-order ("rightmost") one-bit in the specified int value. Returns zero if the specified value has no one-bits in its two's complement binary representation, that is, if it is equal to zero.
+
+
+### number of leading zeros
+
+### Number of trailing zeros
+
+### bitcount/popcount
+
+`public static int bitCount(int i)`
+Returns the number of one-bits in the two's complement binary representation of the specified int value. This function is sometimes referred to as the population count.

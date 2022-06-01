@@ -187,5 +187,24 @@ class Solution {
   }
 }
 ```
+Before first loop:
+amount = 5, 
+| 1 | 0 | 0 | 0 | 0 | 0 |
+| --- | --- | --- | --- | --- | --- |
+
+`coin = 1`, `x = 1 to 5`
+| 1 | 1 | 1 | 1 | 1 | 1 |
+| --- | --- | --- | --- | --- | --- |
+
+`coin = 2`, `x = 2 to 5`,
+| 1 | 1 | 2 | 2 | 3 | 3 |
+| --- | --- | --- | --- | --- | --- |
+
+`coin = 5`, `x = 5 to 5`
+| 1 | 1 | 2 | 2 | 3 | 4 |
+| --- | --- | --- | --- | --- | --- |
+
+Ans = `dp[5]` = `4`.
+
 
 # variant 3 - count number of ways (ordering does not matter), each coin can be picked once

@@ -128,12 +128,17 @@ representation, and we will avoid extra counting:
 
 `dp[i][0] = 1` = only 1 way to make 0 value, not select anything.
 
-`dp[type][Value] = dp[type+1][Value] + dp[type][Value-coin[type]]`
+Forward recurrence = `dp[type][Value] = dp[type+1][Value] + dp[type][Value-coin[type]]`
 `ans = dp[type][Value]`
+
+Termination conditions for forward recurrence = `type == N` or `Value is -ve`, in that case count is 0.
 
 ![transition](images/dpcoinchange.jpg)
 
-### iterative dp table
+### iterative dp table (fill row by row, left to right inside a row)
+
+note when we are allowed multiple items/coins like unbounded knapsack, we can jump left in the same row for smaller subproblem,
+if we are not allowed to repeat coin more than once, then we go both up and left in reucurrence table.
 
 | coins\value     | 0 | 1 | 2 | 3 | 4 | 5 |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -142,5 +147,45 @@ representation, and we will avoid extra counting:
 | `[`1,**2**`]`   | 1 | 1 | 2 | 2 | 3 | 3 |
 | `[`1,2,**5**`]` | 1 | 1 | 2 | 2 | 3 | 4 |
 
+Since we go row by row, outer loop is i = 0 to coin-types
+inner loop goes from 0 to value
+```java
+    public int change(int amount, int[] coins) {
+        int[][]dp = new int[coins.length+1][amount+1];//note table dimensions
+        for(int i=0;i<=coins.length;i++){
+            dp[i][0] = 1;// exactly one way to make 0 amount
+        }
+        for(int i=1;i<=amount;i++) {
+            dp[0][i] = 0; // 0 ways to make any amount from no coins
+        }
+        
+        for(int i=0;i<coins.length;i++) { // consider ith coin
+            for(int j=1;j<=amount;j++) { // consider all amounts to filled with it
+                //i+1th row corresponds to considering ith coin in dp table
+                dp[i+1][j] = ((j-coins[i] < 0) ? 0 : dp[i+1][j-coins[i]]) + dp[i][j];
+            }
+        }
+        
+        return dp[coins.length][amount];
+    }
+```
+
+### Dimensionally compressed solution
+
+```java
+class Solution {
+  public int change(int amount, int[] coins) {
+    int[] dp = new int[amount + 1];// amount dimension
+    dp[0] = 1;
+
+    for (int coin : coins) {// for each coin considered
+      for (int x = coin; x < amount + 1; ++x) {// go from coin amount to end of amount
+        dp[x] += dp[x - coin];// entries on right use entries on left, filling from left to right
+      }
+    }
+    return dp[amount];
+  }
+}
+```
 
 # variant 3 - count number of ways (ordering does not matter), each coin can be picked once

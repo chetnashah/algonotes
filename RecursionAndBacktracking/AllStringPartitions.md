@@ -53,7 +53,6 @@ public class Main {
         }
 
         // System.out.println("prevList = " + prevList +" thisList = "+thisList +" start = "+ start+" end = "+ end);
-    
         List<List<Integer>> temp = new ArrayList<>();
         temp.addAll(prevList);
         temp.add(thisList);

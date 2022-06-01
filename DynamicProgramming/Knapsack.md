@@ -233,6 +233,7 @@ Sample example:
 
 Here dp size would be:
 `dp[100 * 10^3+1]` - holding min weight for each possible value i.
+
 ### State transition logic
 
 since this is weight minimization, `min` function shall be used.
@@ -265,6 +266,7 @@ no. partitions of 5 = 7
 A variation on unbounded knapsack. a 2-d dp on all targets vs items/coins.
 We are looking for all multiset S such that sum of elements in multi set equals Target C.
 
+See [Coin change](CoinChange.md)
 
 ## Subset sum
 

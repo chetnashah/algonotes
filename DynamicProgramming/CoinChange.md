@@ -1,7 +1,7 @@
 
 This is a variant of knapsack in following terms:
-N -> amount we want to fulfill
-coins -> items we want to fill/pick to make change for N.
+1. `N` -> amount we want to fulfill
+2. `coins` -> `items` we want to fill/pick to make change for N.
 
 https://www.youtube.com/watch?v=1mtvm2ubHCY
 

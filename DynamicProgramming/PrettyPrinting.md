@@ -31,6 +31,8 @@ Seeing the example given above, greedy strategy is not good
 
 In optimum placement of i words,
 the last line consists of some subset of words ending in ith word.
+Try to place starting from ith word to as many as possible counting down from i-1 till you have some space remaining on last line, and improve estimates for `messiness[i]`.
+
 
 ## DP State
 
@@ -47,7 +49,12 @@ ith, i-1th, i-2th word -> update min possiblle for i
 ... -> update min possiblle for i
 ith, i-1th, i-2th, ... i-kth word -> update min possiblle for i
 
-`M[i] = for j = i,i-1,i-2,...k where k is least possible index which can fit in last line, min(f(i,j) + M[j-1])`
+`M[i] = for j = i,i-1,i-2,...k where k is least possible index which can fit in last line, min(M[i], f(i,j) + M[j-1])`, we notice j-1th item sits on previous line.
+`f(i,j) = blank^2 after placing words j..i on last line`
+
+## recurrence explaination
+
+![dp](images/prettyprintdp.jpg)
 
 ## Code (top down dp)
 
@@ -82,8 +89,9 @@ ith, i-1th, i-2th, ... i-kth word -> update min possiblle for i
     // we will try to place ith word
     int remainingspace = lineLength - words.get(i).length();// first substract its space
     int messinessFori = remainingspace * remainingspace + calcMessiness(words, lineLength, i-1);// only placing ith word in last line
-    for(int j=i-1;j>=0;j--) {// for all words before the current
-      // try placing words[j..i] in last line
+
+    // try placing words[j..i-1] in last line, and update estimates for least messiness for current word
+    for(int j=i-1;j>=0;j--) {// for all words before the current which you can place in last line, update estimates
       remainingspace = remainingspace - (words.get(j).length() + 1); // extra 1 for space between words
       if(remainingspace < 0) {
         break;

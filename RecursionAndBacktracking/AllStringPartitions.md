@@ -58,10 +58,10 @@ public class Main {
         temp.add(thisList);
         System.out.println("combined ans = " + temp);
                 
-        for(int m = start+1; m<=end;m++) {// for all possible first sub-array of given array
+        for(int m = start+1; m<=end;m++) {// for all possible first sub-array of given array, including end
             ArrayList<Integer> first = new ArrayList<Integer>();
 
-            for(int i=start;i<m;i++) {
+            for(int i=start;i<m;i++) {// not including m
                 first.add(original.get(i));
             }
             prevList.add(first);// add the first sub array, 

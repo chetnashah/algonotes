@@ -17,7 +17,7 @@ and the final ans is:
 | 16 | 12 | 8 | 4 |
 
 
-## Core idea = 4 way swap starting from corners(clockwise) to next cell.
+## Core idea = 4 way swap starting from corners(clockwise)
 
 Initial state:
 After 4-way swap of corners we get: `1, 4, 16, 13`

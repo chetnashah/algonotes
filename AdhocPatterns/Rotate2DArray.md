@@ -62,3 +62,25 @@ For `N=3`, you need to process `i < 3/2` => `i < 1` => i = 0 (1 rectangle)
 ## No. of swaps per rectangle
 
 you need to start from `j = i` to `j < N - i`
+
+## Code
+```java
+    public void rotate(int[][] matrix) {
+        int N = matrix.length -1;
+        for(int i=0;i<matrix.length/2;i++) {// there are total n/2 concentric rectangles to process e.g. 4/2 -> 2, 3/2 -> 1
+            for(int j=i; j<N-i;j++){// j is the offset for cell currently being considered for 4 way swap
+                System.out.println("i = " + i + "j = "+ j);
+                int temp1 = matrix[i][j];// top left corner
+                int temp2 = matrix[j][N-i]; // top right
+                int temp3 = matrix[N-i][N-j]; // bottom right corner
+                int temp4 = matrix[N-j][i]; // bottom left
+                // System.out.println("t1 = "+ temp1+ " t2 = " + temp2 +" t3 = " + temp3 + " t4 = "+ temp4);
+                
+                matrix[j][N-i] = temp1;
+                matrix[N-i][N-j] = temp2;
+                matrix[N-j][i] = temp3;
+                matrix[i][j] = temp4;
+            }
+        }
+    }
+```

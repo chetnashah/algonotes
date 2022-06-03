@@ -10,6 +10,37 @@ The value of `f[i][j]` can be computed in this problem knowing the values of `f[
 
 Then the final answer is the value of `f[n][m]`. In this approach, an entry in  table is called a state, and since the table is 2-dimensional, this dynamic programming solution is 2-dimensional
 
+## Recursive LCS (without memo)
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World!");
+        String s = "abaca";
+        String t = "daaca";
+        System.out.println(getLCS(s,t, s.length()-1, t.length()-1));
+    }
+    
+    static int getLCS(String s, String t, int slen, int tlen) {
+        if(slen == -1 || tlen == -1){// one of the strings is empty, no common chars so 0
+            return 0;
+        }
+        if(slen == 0 || tlen == 0) {// single char in one of the strings
+            return s.charAt(slen) == t.charAt(tlen) ? 1 : 0;
+        }
+        return getMax(
+            getLCS(s,t, slen -1, tlen), // remove a char from first string
+            getLCS(s,t, slen, tlen-1),  // remove a char from second string
+            getLCS(s,t, slen-1, tlen-1) + ((s.charAt(slen) == t.charAt(tlen)) ? 1 : 0) // remove char from both strings, while adding one if removed char was same
+        );
+    }
+    
+    public static int getMax(Integer... vals) {
+        return Collections.max(Arrays.asList(vals)); 
+    }
+}
+```
+
 ## Code
 
 ```java

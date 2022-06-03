@@ -1,7 +1,18 @@
 
 ## dp on strings ending in idx i on 1st string and idx j on 2nd string
 
-##
+## For each last char seen in two strings, try to extend consecutive if same char, else reset
+
+
+For `t = "abcb"` and `s = "kbc"`;
+
+|   |   | `k` | `b` | `c` |
+| --- | --- | --- | --- | --- |
+|   |   | 0 | 0 | 0 |
+| `a` | 0 | 0 | 0 | 0 |
+| `b` | 0 | 0 | 1 | 0 |
+| `c` | 0 | 0 | 0 | 2 |
+| `b` | 0 | 0 | 1 | 0 |
 
 ```java
 public class Main {

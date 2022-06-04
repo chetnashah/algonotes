@@ -47,6 +47,24 @@ Time complexity for brute force approach: O(n ^ 4)
 3. from all possible combinations, pick the best sum of two subarrays. 
 
 
+### Core Idea - bidirectional DP
 
-### Core Idea
+`P1[i] - max profit including day i with only buying and selling once` - same idea as variation 1.
+`P2[i] - max profit after day i by buying and selling stock once` - traverse from end of array, maintaining a maxSofar to calculate profits
+
+`ans[i] = max(P1[i] + P2[i])`: 
+
+e.g. lets have input array:
+
+| 12 | 11 | 13 | 9 | 12 | 8 | 14 | 13 | 15 |
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+
+`P1[i]` will be
+
+| minSoFar                           | 12    | 11    | 11    | 9     | 9     | 8     | 8     |  8    |  8    |
+| :---:                              | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| `arr[i]`                           | 12    | 11    | 13    | 9     | 12    | 8     | 14    | 13    |  15   |
+| `max(arr[i] - minSoFar, arr[i-1])` | 0     | 0     | 2     | 2     | 3     | 3     | 6     | 6     | 7     |
+
+`P2[i]` will be
 

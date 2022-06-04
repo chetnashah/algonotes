@@ -85,3 +85,48 @@ e.g. lets have input array:
 | `P2[i]`    |  7 | 7     | 7     | 7     | 7     | 7     | 2      | 2      | 0      | 0/-     |
 | `ans[i]`   | 7  |  7    |  7    | 9     | 9     | 10    | 5      | 8      |  6     | 7/-     |
 
+### Code
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        
+        int[] firstProfit = new int[prices.length]; // profit by buying and selling till day i
+        int minSoFar = prices[0];// first is min seen so far
+        firstProfit[0] = 0;// buying and selling on same day is 0 profit
+        for(int i=1 ; i<firstProfit.length ; i++) {
+            int currPrice = prices[i];
+            if(currPrice < minSoFar) {
+                minSoFar = currPrice;
+            }
+            firstProfit[i] = Math.max(firstProfit[i-1], currPrice-minSoFar);
+        }
+        // System.out.println(Arrays.toString(firstProfit));
+        
+        int[] secondProfit = new int[prices.length];// profit by buying and selling on + after ithday
+        int maxSofar = prices[prices.length-1];// last is max seen so far
+        secondProfit[prices.length - 1] = 0; // buying and selling on last day is 0 profit
+        for(int i=secondProfit.length-2; i>=0; i--) {
+            int currPrice = prices[i];
+            if(currPrice > maxSofar) {
+                maxSofar = currPrice;
+            }
+            secondProfit[i] = Math.max(secondProfit[i+1], maxSofar - currPrice);
+        }
+        // System.out.println(Arrays.toString(secondProfit));
+
+        
+        int[] ans = new int[prices.length];
+        int ansMax = 0;
+        for(int i=0;i<prices.length;i++) {
+            ans[i] = (i == 0 ? 0 : firstProfit[i-1]) + secondProfit[i];
+            if(ans[i] > ansMax) {
+                ansMax = ans[i];
+            }
+        }
+        // System.out.println(Arrays.toString(ans));
+        
+        return ansMax;
+    }
+}
+```

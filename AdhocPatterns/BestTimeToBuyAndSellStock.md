@@ -11,7 +11,9 @@ Check every pair and maintain `max(a[j] - a[i])`.
 ### Where I got stuck/learnings
 
 Just taking max/min is not enough,
+
 since min can appear at the end of the array and not useful. 
+
 But minSoFar is useful, since buying has to be done from `[1..i] days`, hence the best min so far would be in it.
 
 ### Linear time solution

@@ -73,11 +73,15 @@ class Solution {
 ### Split into blocks of size k (disjoint)
 
 The idea is to `split an input array into blocks of k elements`. 
+
 The last block could contain less elements if `n % k != 0`.
 
-### core idea, the max will definitely be captured in either right walk or left walk
+![image](images/slidingwindowmax2ddp.png)
+
+### Core idea: the max will definitely be captured in either right walk or left walk
 
 If max was missed in left to right walk, it is captured in right to left walk.
+
 
 ### Proof: Case wise analysis:
 

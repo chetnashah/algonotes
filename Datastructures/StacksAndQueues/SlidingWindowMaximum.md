@@ -101,6 +101,12 @@ In that case it will be captured in left to right walk.
 
 `right[i]` - max element in block up to index i, block starting from right.
 
+`ans[i]` = `max(left[k+i-1], right[i])`
+
+### Example diagram
+
+![bidirectional dp](images/slidingwindowmaxdp.jpg)
+
 ### Code
 
 ```java

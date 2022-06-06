@@ -130,3 +130,70 @@ class Solution {
     }
 }
 ```
+
+### recursion
+
+numTransactions = 0 lastStockHoldOrNot = 0 dayNum = 0
+numTransactions = 0 lastStockHoldOrNot = 1 dayNum = 1
+numTransactions = 1 lastStockHoldOrNot = 0 dayNum = 2
+numTransactions = 1 lastStockHoldOrNot = 1 dayNum = 3
+numTransactions = 1 lastStockHoldOrNot = 0 dayNum = 3
+
+numTransactions = 0 lastStockHoldOrNot = 1 dayNum = 2
+numTransactions = 1 lastStockHoldOrNot = 0 dayNum = 3
+numTransactions = 0 lastStockHoldOrNot = 1 dayNum = 3
+numTransactions = 0 lastStockHoldOrNot = 0 dayNum = 1
+numTransactions = 0 lastStockHoldOrNot = 1 dayNum = 2
+numTransactions = 1 lastStockHoldOrNot = 0 dayNum = 3
+numTransactions = 0 lastStockHoldOrNot = 1 dayNum = 3
+numTransactions = 0 lastStockHoldOrNot = 0 dayNum = 2
+numTransactions = 0 lastStockHoldOrNot = 1 dayNum = 3
+numTransactions = 0 lastStockHoldOrNot = 0 dayNum = 3
+
+## Variant: buy and sell stock k times, 
+
+### Brute force
+
+Try each of 2k days, resulting in O(2 ^ 2k) complexity
+
+### Dynamic programming formulation
+
+### Partial top down recursion
+
+```java
+class Solution {
+    public int maxProfit(int k, int[] prices) {
+        int ans = backtrackHelper(0, 0, 0, k, prices);
+        return ans;
+    }
+    
+    /**
+    return best ans for k transactions and prices,
+    give we are considering dayNum, already numTransactions have finished, and lastStockwas hold or not.
+    */
+    int backtrackHelper(int numTransactions, int lastStockHoldOrNot, int dayNum, int k, int[] prices) {
+        System.out.println("numTransactions = "+numTransactions+" lastStockHoldOrNot = "+lastStockHoldOrNot + " dayNum = " +dayNum);
+        if(numTransactions == k) {
+            return 0;// no more transactions can be done
+        }
+        
+        if(dayNum == prices.length) {
+            return 0;// we are out of days to consider
+        }
+        
+        // we can buy
+        if(lastStockHoldOrNot == 0) {
+            backtrackHelper(numTransactions, 1, dayNum+1, k, prices);
+        }
+        
+        // we can sell
+        if(lastStockHoldOrNot == 1) {
+            backtrackHelper(numTransactions+1, 0, dayNum+1, k, prices);
+        }
+        
+        // we can hold
+        backtrackHelper(numTransactions, lastStockHoldOrNot, dayNum+1, k, prices);
+        return 0;
+    }
+}
+```

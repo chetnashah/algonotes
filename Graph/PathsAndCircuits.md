@@ -13,6 +13,12 @@ A path that starts and ends at the same node is known as a cycle/circuit
 A path that visits all the edges exactly once.
 Note: some nodes may be visited twice.
 
+### Existence condition for eulerian path
+
+**Eulerian path existence depends on start node `s`**
+E.g. no eulerian path exists if we start at folowing start node:
+![img](images/eulerpathexistencecondition.png)
+
 ## Eulerian circuit
 
 A path that visits all the edges exactly once and ends up in same node.

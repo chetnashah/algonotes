@@ -158,6 +158,10 @@ An edge in (undirected?) graph G whose removal (keeping all vertices as it is), 
 * An edge is a bridge if and only if it is not contained in any cycle.
 * In a tree, every edge is a bridge because a tree has no cycles.
 
+## DFS where you want to return values along the path when you find a path to a destination vertex
+
+TODO
+
 ### Applications
 
 1. Connectivity - a connected graph will mark all vertices as visited ina single pass of DFS, does not need to start DFS on a separate vertex

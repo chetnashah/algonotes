@@ -41,7 +41,9 @@ f = (v & (v - 1)) == 0;
 f = v && !(v & (v - 1)); // if clearing the last set bit in v makes it 0, it was a power of 2
 ```
 
-## Toggle n'th bit
+## Toggle n'th bit (from the end)
+
+`1 << n` represents $$2^n$$
 
 ```py
 def toggle_nth_bit(num, n: int) -> str:

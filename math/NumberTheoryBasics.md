@@ -91,5 +91,17 @@ extended eucliedean algorithm finds the `gcd(a,b)` as well as `p`,`q`, such that
 
 
 
+## Check if number is perfect square
 
+take `(int)floor(sqrt(x))`, and try multiplying it with itself to see if we get original number.
 
+```java
+boolean isPerfectSquare(int x) {
+    if(x>=0) {
+        int sqrt = (int)Math.sqrt(x);
+
+        return (sqrt*sqrt == x);
+    }
+    return false;
+}
+```

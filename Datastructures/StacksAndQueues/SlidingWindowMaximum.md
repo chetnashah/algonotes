@@ -18,6 +18,8 @@ In general queues can be a useful approach for sliding window problems since the
 
 ### Monotonic decreasing queue for sliding window maximum
 
+TODO: instead of two separate loops, have one loop with checks
+
 ```java
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {

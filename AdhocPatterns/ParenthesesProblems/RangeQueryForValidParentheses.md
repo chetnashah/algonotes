@@ -21,3 +21,5 @@ Edge case:
 If you see above substring, the counter is same, but string inside it is ")(", even though counts around string is same = 2.
 
 
+Improvement idea on this:
+no decreasing values between the endpoint counters. only increasing counter values between endpoint counters.

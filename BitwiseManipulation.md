@@ -6,6 +6,31 @@ gives the last set bit in a number x
 x & (-x) # anding with its own 2's complement
 ```
 
+## ith bit means ith bit from right 
+
+`1 << n` => 1 shifted by n places, also means $2^n$
+e.g. `1 << 2` => 1 shifted by 2 places i.e. `100` = 4 = $2^2$
+
+## Setting nth bit
+
+`x | (1 << n)`
+
+## clear nth bit
+
+`x & ~(1 << n)`
+
+## flip the nth bit
+
+`x ^ (1 << n)`
+
+xoring 1 with existing bit helps in flipping it.
+
+## Left shifting longs (working with more than 32 bits)
+
+```
+1L << 40
+```
+
 ## number of set bits in a number
 ```cpp
 __builtin_popcount(x) returns popcount of a number — the number of ones in the binary representation of 𝑥. Use __builtin_popcountll(x) for long longs.
@@ -86,3 +111,32 @@ Returns an int value with at most a single one-bit, in the position of the lowes
 
 `public static int bitCount(int i)`
 Returns the number of one-bits in the two's complement binary representation of the specified int value. This function is sometimes referred to as the population count.
+
+## XOR operator
+
+## Operator precedence
+
+negation/tiled operators take precedence over shift operators `>>`, `<<`, take precedence over other and,or operators (`|`, `&`).
+
+## tilde operator (gives ones complement)
+
+The Tilde (`~`) performs a bitwise complement of a numerical value in Java.
+
+only used with integer values
+inverts the bits ie a 0-bit becomes 1-bit and vice versa
+in all cases `~x` equals `(-x)-1`
+
+## Relation between twos complement and one compelement
+
+`~x` = `(-x) - 1`
+or
+`-x = ~x + 1`
+
+## Bitset class
+
+https://docs.oracle.com/javase/7/docs/api/java/util/BitSet.html
+
+## a&b is given, a|b is given, what is a+b?
+
+`a + b` = `a & b` + `a | b`
+

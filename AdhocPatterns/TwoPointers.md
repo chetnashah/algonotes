@@ -75,3 +75,14 @@ int main(){
 	}
 }
 ```
+
+## Count Number of subarrays with number of distinct elements less than or equal to k.
+
+**We can also count interesting/valid sub arrays as we move end pointer (add one for each valid window end).**
+For increment of start pointer also, if there is valid window, count that subarray as well.
+
+e.g. 
+| 1  |  2  |  3  |  2  |  3  |  4  |  1  |  5  |  1  |  8  |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+
+Find number of sub arrays with number of distinct elements less than k = 2.

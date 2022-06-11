@@ -14,6 +14,8 @@ Once we have a correct recursive algorithm, then we worry about speeding it up b
 3. polygons.
 4. Integer sequences.
 
+Comparision with Divide and conquer - in divide and conquer, usually there are no overlapping subproblems, so in some sense simpler than DP.
+
 ## Optimal substructure
 
 Idea: Optimal solutions to problem incorporates optimal solutions to subproblem(s)

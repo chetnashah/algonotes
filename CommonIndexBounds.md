@@ -58,3 +58,14 @@ even sized array:
 | 0 | `1` | 2 | 3 |
 | --- | --- | --- | --- |
 | | `mid` | | |
+
+## Number of subarrays starting at index i
+
+The starting index is `i`, and last possible index is `n-1`.
+Total no of elements between inclusive of both `i` and `n-1` is `(n-1) - i +1` = `n-i`
+Each one of these elements can serve as end index, so there are `n-i` subarrays starting at index i.
+
+## Number of subarrays ending at index i
+
+There are `i - 0 + 1` elements between 0 to ith element, each of which can serve as starting array index.
+So there are `i+1` sub arrays ending at index i.

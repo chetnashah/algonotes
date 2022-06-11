@@ -1,7 +1,11 @@
 
 ## PRefix sum is a simple technique that can be useful in many problems
 
-Idea: `prefixSum[i]` = cumulative sum upto array index i inclusive
+Idea: `prefixSum[i]` = cumulative sum upto array index `i inclusive`
+in short `p[i] = p[i-1] + a[i], i>0`, and `p[0]=a[0]`.
+
+Mathematically
+$$ P_i = \sum_{k=0}^i A_k$$
 
 ```py
 def calculatePrefixSum(arr):
@@ -14,4 +18,6 @@ def calculatePrefixSum(arr):
 
 ## Applications
 
-1. range sums in range (r,l) - get prefix sum for range via `prefixSum[0,r] - prefixSum[0, l-1]` 
+1. O(1) range sums in range (r,l) both inclusive - get prefix sum for range via `prefixSum[l,r] = prefixSum[0,r] - prefixSum[0, l-1]` 
+
+

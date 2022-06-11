@@ -5,7 +5,7 @@ Idea: `prefixSum[i]` = cumulative sum upto array index `i inclusive`
 in short `p[i] = p[i-1] + a[i], i>0`, and `p[0]=a[0]`.
 
 Mathematically
-$$ P_i = \sum_{k=0}^i A_k$$
+$$ P[i] = \sum_{k=0}^i A[k]$$
 
 ```py
 def calculatePrefixSum(arr):

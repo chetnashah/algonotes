@@ -17,6 +17,10 @@ $$ C_0 =  C_1 = 1$$
 
 $$ C_n = \sum_{k=0}^{n-1} C_k * C_{n-1-k}, n >= 2$$
 
+## Calculation
+
+![calc](images/catalanrecurrence.jpg)
+
 ## Code
 
 ```java

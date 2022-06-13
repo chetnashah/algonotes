@@ -45,7 +45,7 @@ public class Main {
 
 ```java
     public int longestCommonSubsequence(String text1, String text2) {
-        int[][] dp = new int[text1.length()][text2.length()];
+        int[][] dp = new int[text1.length()][text2.length()];// 0-indexed
         // dp[i][j] = lcs for text1 ending in ith char and text2 ending in jth char
         dp[0][0] = text1.charAt(0) == text2.charAt(0) ? 1 : 0;
         for(int i=1;i<text1.length();i++) {// filling first col
@@ -70,3 +70,8 @@ public class Main {
         return dp[text1.length() - 1][text2.length() - 1];
     }
 ```
+
+## Applications
+
+1. Longest palindromic subsequence - 
+

@@ -6,6 +6,10 @@ gives the last set bit in a number x
 x & (-x) # anding with its own 2's complement
 ```
 
+## 2^n represntation has n+1 bits, first is 1 followed by n zeros
+
+Similarly `2^n - 1` has n bits, all set to 1.
+
 ## ith bit means ith bit from right 
 
 `1 << n` => 1 shifted by n places, also means $2^n$
@@ -122,6 +126,9 @@ Returns the number of one-bits in the two's complement binary representation of 
 
 ## XOR operator
 
+Xor is just asking if the bits are different? then 1,
+if the bits are same, then 0.
+
 ## Operator precedence
 
 negation/tiled operators take precedence over shift operators `>>`, `<<`, take precedence over other and,or operators (`|`, `&`).
@@ -136,9 +143,10 @@ in all cases `~x` equals `(-x)-1`
 
 ## Relation between twos complement and one compelement
 
-`~x` = `(-x) - 1`
+
+`~x` = `(-x) - 1` (subtracting 1 from twos complement gives us ones complement)
 or
-`-x = ~x + 1`
+`-x = ~x + 1` (Adding one to ones complement gives us twos complement)
 
 ## Bitset class
 
@@ -147,4 +155,27 @@ https://docs.oracle.com/javase/7/docs/api/java/util/BitSet.html
 ## a&b is given, a|b is given, what is a+b?
 
 `a + b` = `a & b` + `a | b`
+
+## Properties of or and anding
+
+`a | b >= max(a,b)`, all ones are accumulated
+`a & b <= max(a,b)`, only common ones survive.
+
+## Masking idea
+
+Representing set with an integer.
+Each ith bit on integer signifies if ith item is in set or not.
+
+`&` these ints, gives you intersection of representive sets
+
+`|` these ints, gives you union of representative sets.
+
+`^` these ints, it gives you the `union - intersection` of these sets.
+
+### Checking ith item set membership
+
+`((1 << i) & x) != 0` if ith bit is in set -> be careful with brackets
+
+Alternative way to do this is:
+`((x >> i) & 1) == 1` , we shift x by i bits, bringing it to end by right shifting and check if it is set or not.
 

@@ -41,3 +41,9 @@ public class Main {
 
 ## another technique is bit counting in integers for 1 << n for n element array
 
+## For n elements, there are 2^n subsets, and each element appears in exactly 2^(n-1) of these subsets.
+
+If we do a binary choice recursion tree, we have option to take an item or leave it, and it shows up accordingly
+
+Or in other way to think about it, a given element fixed, there are $2^(n-1)$ possiblities on whether or not to choose other items.
+

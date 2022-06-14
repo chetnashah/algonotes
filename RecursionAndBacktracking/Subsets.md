@@ -41,7 +41,9 @@ public class Main {
 
 ## another technique is bit counting in integers for 1 << n for n element array
 
-## For n elements, there are 2^n subsets, and each element appears in exactly 2^(n-1) of these subsets.
+## For n elements, there are 2^n subsets.
+
+## each element appears in exactly 2^(n-1) of sets out of the powerset
 
 If we do a binary choice recursion tree, we have option to take an item or leave it, and it shows up accordingly
 

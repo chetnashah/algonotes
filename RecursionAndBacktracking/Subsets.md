@@ -45,5 +45,5 @@ public class Main {
 
 If we do a binary choice recursion tree, we have option to take an item or leave it, and it shows up accordingly
 
-Or in other way to think about it, a given element fixed, there are $2^(n-1)$ possiblities on whether or not to choose other items.
+Or in other way to think about it, a given element fixed, there are $2^{n-1}$ possiblities on whether or not to choose other items.
 

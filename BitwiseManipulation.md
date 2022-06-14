@@ -13,7 +13,7 @@ e.g. `1 << 2` => 1 shifted by 2 places i.e. `100` = 4 = $2^2$
 
 ## Right shift (divide by 2 and floor)
 
-$$ x >> y = \floor(x/2^y) $$
+$$ x >> y = \lfloor x/2^y \rfloor $$
 
 ## Left shift (multiply by 2)
 

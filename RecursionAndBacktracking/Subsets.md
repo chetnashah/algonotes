@@ -49,3 +49,27 @@ If we do a binary choice recursion tree, we have option to take an item or leave
 
 Or in other way to think about it, a given element fixed, there are $2^{n-1}$ possiblities on whether or not to choose other items.
 
+## Subset of subsets via submasking (nested masking)
+
+start `submask` from `mask` to `zero`,
+
+`submask = (submask - 1) & mask` // anding with mask so we always get subset of mask
+
+e.g.
+
+```java
+int[] arr = new int[3] {1,2,3};
+int sum =0;
+for(int mask=0;mask < (1<<n); mask++) {// mask represent a subset
+    // for each mask lets get submask - 
+    // submask represent subset of current mask, i.e. subsets of subsets
+    for(int submask = mask; submask>0; submask = (submask - 1) & mask) {
+        for(int pos=0;pos<n;pos++) {
+            if((submask >> pos) & 1 == 1) {
+                sum+=arr[pos];
+            }
+        }
+    }
+}
+return sum;
+```

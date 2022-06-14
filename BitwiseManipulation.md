@@ -11,6 +11,14 @@ x & (-x) # anding with its own 2's complement
 `1 << n` => 1 shifted by n places, also means $2^n$
 e.g. `1 << 2` => 1 shifted by 2 places i.e. `100` = 4 = $2^2$
 
+## Right shift (divide by 2 and floor)
+
+$$ x >> y = \floor(x/2^y) $$
+
+## Left shift (multiply by 2)
+
+$$ x << y = x * 2^y $$
+
 ## Setting nth bit
 
 `x | (1 << n)`

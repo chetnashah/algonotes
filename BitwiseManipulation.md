@@ -134,6 +134,8 @@ Returns the number of one-bits in the two's complement binary representation of 
 Xor is just asking if the bits are different? then 1,
 if the bits are same, then 0.
 
+You can think of XOR as add but no carry allowed anywhere.
+
 ### Given a xor of two different numbers (that appear only once in a list) how to get those individual numbers, given a list of numbers?
 
 For numbers which repeat, will be cancelled out via XOR, remaining you will have two numbers whose xor you have X.
@@ -176,6 +178,9 @@ int getAns(n) {
     }
 }
 ```
+
+This can also be used to calculate XOR of intermediate ranges e.g. `[L..R]` if necessary. e.g. Xoring `F(1..R) ^ F(1..L)`
+will give you `XOR(L..R)`, because first L elements willg get cancelled.
 
 ## Operator precedence
 

@@ -76,3 +76,12 @@ So there are `i+1` sub arrays ending at index i.
 ```java
 int[][] updownGrid = new int[grid.length][grid[0].length];// first index is number of rows, second index is number of columns.
 ```
+
+## How many times total i.e. frequency of `i`th element occurs in all sub arrays of `[0..(n-1)]`
+
+Ans = `(i+1) * (n-i)`
+
+There `i+1` ways to select the first index of sub array where ith element would appear.
+There would be `(n-1)-i+1` ways to select end index of sub array -> Refer number of elements between two indices above.
+By product rule of counting answer is `(i+1) * (n-i)`.
+

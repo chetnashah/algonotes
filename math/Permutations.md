@@ -1,4 +1,7 @@
 
+https://sedgewick.io/wp-content/themes/sedgewick/talks/2002PermGeneration.pdf
+
+https://academic.oup.com/comjnl/article/6/3/293/360213?login=false
 
 ### Generating permutations via recursion
 

@@ -6,6 +6,11 @@ gives the last set bit in a number x
 x & (-x) # anding with its own 2's complement
 ```
 
+Another way to get it is:
+```py
+x & (~(x-1))
+```
+
 ## 2^n represntation has n+1 bits, first is 1 followed by n zeros
 
 Similarly `2^n - 1` has n bits, all set to 1.
@@ -129,6 +134,48 @@ Returns the number of one-bits in the two's complement binary representation of 
 Xor is just asking if the bits are different? then 1,
 if the bits are same, then 0.
 
+### Given a xor of two different numbers (that appear only once in a list) how to get those individual numbers, given a list of numbers?
+
+For numbers which repeat, will be cancelled out via XOR, remaining you will have two numbers whose xor you have X.
+pick any bit set in the X, now check if that bit was set in given list of numbers, 
+XOR all of them, even ones will cancel out, remaining one will be one of your two numbers that appear only once.
+you have your number, other numbers
+
+
+### XOR for numbers from 1 to n
+
+You have to notice the pattern by writing numbers down and seeing their cumulative XOR, it repeats with a periodicity of 4.
+
+E.g. see this table
+
+| num  |      |     |     |     | xor including previous elements |
+|:---: | :---:|:---:|:---:|:---:|:---:                            |
+| 0    |  0   |  0  |  0  |   0 |        0                        |
+| 1    |  0   |  0  |  0  |  1  |        1                        |
+| 2    |  0   |  0  |  1  |  0  |        11 = 3                   |
+| 3    |  0   |  0  |  1  |  1  |        00 = 0                   |
+| 4    |  0   |  1  |  0  |  0  |        100 = 4                  |
+| 5    |  0   |  1  |  0  |  1  |        001 = 1                  |
+| 6    |  0   |  1  |  1  |  0  |        111 = 7                  |
+| 7    |  0   |  1  |  1  |  1  |        000 = 0                  |
+| 8    |  1   |  0  |  0  |  0  |       1000 = 8                  |
+| 9    |  1   |  0  |  0  |  1  |       0001 = 1                  |
+| 10   |  1   |  0  |  1  |  0  |       1011 = 11                 |
+| 11   |  1   |  0  |  1  |  1  |       0000 = 0                  |
+| 12   |  1   |  1  |  0  |  0  |       1100 = 12                 |
+
+Ans is:
+```java
+int getAns(n) {
+    switch(n%4) {
+        case 0: return n;
+        case 1: 1;
+        case 2: return n+1;
+        case 3: return 0;
+    }
+}
+```
+
 ## Operator precedence
 
 negation/tiled operators take precedence over shift operators `>>`, `<<`, take precedence over other and,or operators (`|`, `&`).
@@ -147,6 +194,10 @@ in all cases `~x` equals `(-x)-1`
 `~x` = `(-x) - 1` (subtracting 1 from twos complement gives us ones complement)
 or
 `-x = ~x + 1` (Adding one to ones complement gives us twos complement)
+
+Another useful identity = `~(x-1) = -x` or
+in other words:
+`~(x-1) = ~x + 1 = -x`
 
 ## Bitset class
 
@@ -178,4 +229,31 @@ Each ith bit on integer signifies if ith item is in set or not.
 
 Alternative way to do this is:
 `((x >> i) & 1) == 1` , we shift x by i bits, bringing it to end by right shifting and check if it is set or not.
+
+## Hamming distance
+
+The hamming distance between two bit strings of length `a` and `b` is the number of bits in where they differ
+
+e.g. `hamming(4,5) = hamming(100, 101) = 1`
+
+straightforward way to calculate:
+```java
+public int hamming(String a, String b) {
+    int d = 0;
+    for(int i=0;i<a.length();i++) {
+        if(a.charAt(i) != b.charAt(i)) {
+            d++;
+        }
+    }
+    return d;
+}
+```
+
+Faster way to calculate if `a` and `b` are represented as int.
+
+```java
+public int hamming(int a, int b) {
+    return Integer.bitCount(a ^ b);
+}
+```
 

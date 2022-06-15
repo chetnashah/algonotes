@@ -146,23 +146,24 @@ you have your number, other numbers
 
 You have to notice the pattern by writing numbers down and seeing their cumulative XOR, it repeats with a periodicity of 4.
 
+The cumulative xor upto `n` follows this: `n, 1, n+1, 0` periodically when remainder is `0, 1, 2,3` respectively. 
 E.g. see this table
 
 | num  |      |     |     |     | xor including previous elements |
 |:---: | :---:|:---:|:---:|:---:|:---:                            |
-| 0    |  0   |  0  |  0  |   0 |        0                        |
+| 0    |  0   |  0  |  0  |   0 |        0 `n`                    |
 | 1    |  0   |  0  |  0  |  1  |        1                        |
-| 2    |  0   |  0  |  1  |  0  |        11 = 3                   |
+| 2    |  0   |  0  |  1  |  0  |        11 = 3 `n+1`             |
 | 3    |  0   |  0  |  1  |  1  |        00 = 0                   |
-| 4    |  0   |  1  |  0  |  0  |        100 = 4                  |
+| 4    |  0   |  1  |  0  |  0  |        100 = 4 `n`              |
 | 5    |  0   |  1  |  0  |  1  |        001 = 1                  |
-| 6    |  0   |  1  |  1  |  0  |        111 = 7                  |
+| 6    |  0   |  1  |  1  |  0  |        111 = 7 `n+1`            |
 | 7    |  0   |  1  |  1  |  1  |        000 = 0                  |
-| 8    |  1   |  0  |  0  |  0  |       1000 = 8                  |
+| 8    |  1   |  0  |  0  |  0  |       1000 = 8 `n`              |
 | 9    |  1   |  0  |  0  |  1  |       0001 = 1                  |
-| 10   |  1   |  0  |  1  |  0  |       1011 = 11                 |
+| 10   |  1   |  0  |  1  |  0  |       1011 = 11 `n+1`           |
 | 11   |  1   |  0  |  1  |  1  |       0000 = 0                  |
-| 12   |  1   |  1  |  0  |  0  |       1100 = 12                 |
+| 12   |  1   |  1  |  0  |  0  |       1100 = 12 `n`             |
 
 Ans is:
 ```java

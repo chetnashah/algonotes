@@ -263,3 +263,16 @@ public int hamming(int a, int b) {
 }
 ```
 
+## Tricky questions
+
+### find the minimum xor of pair of elements in an array
+
+Sort the array in increasing order.
+Min xor will be xor of `arr[i] ^ arr[i+1]`
+
+Proof: interesting, higher numbers have 1 bit set in higher positions.
+
+
+### find total number of set bits for all integers from 0 to n
+
+observation based idea

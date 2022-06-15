@@ -69,3 +69,10 @@ Each one of these elements can serve as end index, so there are `n-i` subarrays 
 
 There are `i - 0 + 1` elements between 0 to ith element, each of which can serve as starting array index.
 So there are `i+1` sub arrays ending at index i.
+
+
+## Allocating a grid same size of other grid
+
+```java
+int[][] updownGrid = new int[grid.length][grid[0].length];// first index is number of rows, second index is number of columns.
+```

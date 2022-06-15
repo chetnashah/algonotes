@@ -15,7 +15,7 @@ Also refer [Dp](../DynamicProgramming/CatalanNumbers.md) for DP like treatment o
 
 $$ C_0 =  C_1 = 1$$
 
-$$ C_n = \sum_{k=0}^{n-1} C_k * C_{n-1-k}, n >= 2$$
+$$ C_{n+1} = \sum_{k=0}^{n} C_k * C_{n-k}, n+1 >= 2$$
 
 ## Calculation
 

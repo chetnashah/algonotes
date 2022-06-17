@@ -23,3 +23,6 @@ As a part of `<algorithm>` header,
 assuming we have a comparision order between array elements and can swap them.
 the range for permutation elements is given via `[start, end)`.
 
+## State space visualization
+
+Always put the first statement in the recursive function as the print statement that prints the state

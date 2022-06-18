@@ -3,7 +3,7 @@
 
 Given an integer array nums, return all the triplets `[nums[i], nums[j], nums[k]]` such that `i != j`, `i != k`, and `j != k`, and `nums[i] + nums[j] + nums[k] == 0`, i.e. they sum together to 0.
 
-**Notice that the solution set must not contain duplicate triplets.**
+**Notice that the solution set must not contain duplicate triplets, and the indices themselves must also be different**
 
 ##
 
@@ -40,6 +40,8 @@ If numbers are duplicated, in the array, we can have many index triplets, that s
 ## Improved approach : N^2:
 
 ### Sort the array first
+
+**One of the reasons for sorting is to skip repeated values.**
 
 Original array:
 | -1  | 0   | 1   | 2   | -1  | -4  |
@@ -79,4 +81,66 @@ and in next iteration, we skip starting with `a = -1`, because we have already c
 |:---:|:---: |:---:|:---:|:---:|:---:|
 |     |      | X   | a   | b ->| <- c|
 
+* Make sure `b` and `c` are within bounds
 
+* sometimes b can also repeat e.g. in case `[0,0,0,0]`. when you have 0 sum, skip same `b`s.
+
+### Interesting test cases:
+
+Input : `[0,0,0,0]`
+Output: `[[0,0,0]]`
+
+### Code
+
+```java
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        List<List<Integer>> ans = new ArrayList<>();
+        
+        if(nums.length == 0 || nums.length == 1 || nums.length == 2)  {
+            return ans;
+        }
+        
+        Arrays.sort(nums);
+        System.out.println(Arrays.toString(nums));
+        
+        /*
+        | -4  | -1   | -1  | 0   | 1   | 2   |
+        | a   | b -> |     |     |     | <- c|
+        */
+        for(int a=0;a<nums.length-2;a++) {
+            if(a>0 && nums[a] == nums[a-1]) {// ignore a's which are already previously considered to avoid duplicates
+                continue;
+            }
+            int b = a+1;
+            int c = nums.length - 1;
+            // System.out.println("a = " + a + " b = " + b + " c = " + c);
+            while(b<c) {
+                if(nums[b] + nums[c] > -1 * nums[a]) {
+                    c--;
+                } else if(nums[b] + nums[c] < -1 * nums[a]) {
+                    b++;
+                } else {
+                    // same
+                    List<Integer> triplet = new ArrayList<>();
+                    triplet.add(nums[a]);
+                    triplet.add(nums[b]);
+                    triplet.add(nums[c]);
+                    ans.add(triplet);
+                    b++;
+                    while(b < nums.length-1 && nums[b] == nums[b-1]) {// skip same b's when we have zero sum since they will contribute to duplicate answer
+                        b++;
+                    }
+                }
+                // System.out.println("inner a = "+a +" b = "+b + " c = "+c);
+            }
+        }
+        return ans;
+    }
+}
+```
+
+
+## How to do it without sorting?
+
+Check here: https://leetcode.com/problems/3sum/solution/

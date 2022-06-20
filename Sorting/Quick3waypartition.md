@@ -3,7 +3,11 @@
 https://algs4.cs.princeton.edu/23quicksort/
 https://leetcode.com/problems/sort-colors/solution/
 
+
+
 ## Quick 3 way parition also known as dutch national flag problem
+
+### Three pointers: i,lo,hi: two pointers: i & lo start at the beginning, hi starts from the end
 
 case 1:
 `el[i] = middle element` -> `i++`

@@ -23,6 +23,9 @@ Output 2:
  "1001"
 ```
 
+## TODO understand and implement solution
+
+
 ## solution
 
 There can be three different types of inputs that need to be handled separately.

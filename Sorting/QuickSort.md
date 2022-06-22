@@ -28,7 +28,7 @@ select first element: `arr[l]`
 ### loop variable and indexes
 l, r are start indexes.
 m is an interesting index we want to calculate,
-i is the looper starting from l+1 to r -> Start after the pivot till end
+i is the looper starting from `l+1` to `r` -> Start after the pivot till end, assuming pivot is at `arr[l]`
 
 ### Swap condition
 
@@ -41,12 +41,16 @@ element value less than pivot -> increase m index and swap
 Techinically this will be an element smaller than pivot because post swapping,
 it would stay to the left.
 
+### return value: by convention, we should return the index of element that got fixed in its final place
+
+By convention, we should return the index of element that got fixed in its final place.
+
 ### code
 
 ```py
 def partition(l, r, arr):
     if (l >= r):
-        return
+        return l
     # start with m = l, the pivot
     m = l
     for i in range(l+1, r+1): # start iterating starting after the pivot
@@ -57,6 +61,7 @@ def partition(l, r, arr):
                 swapAtIdx(m, i, arr) # 
             # at this point, m points to arr element less than l (which came from idx i)
     swapAtIdx(l,m, arr) # bring pivot element i.e l into its final place in sorted arr
+    return m
 
 def swapAtIdx(m, n, arr):
     print("swapping at: m = ", m, " n = ", n)
@@ -64,6 +69,33 @@ def swapAtIdx(m, n, arr):
     arr[m] = arr[n]
     arr[n] = temp
 ```
+
+## Randomized lomuto partitioning
+
+In the above lomuto partitioning, we always considered `low` or `l` as the pivot, 
+and iterated frm `l+1` to `r` for arrangement.
+
+A slight modification to this step.
+* Before starting the partitioning, swap `arr[l]` with a random Idx `arr[randIdx]`.
+* Now continue the partitioning scheme as usual without any changes
+  
+For details on random numbers, refer [Random numbers](../Arrays/RandomNumbers.md)
+
+```java
+int randPartition(l, r, arr){
+    if(l >= r) {
+        return l;
+    }
+
+    // pick a random index and swap with arr[l]
+    int randIdx = l+(int)(Math.random() * (r-l+1));
+    swap(arr, randIdx, l);
+
+    // continue wth original partition scheme
+    return partition(arr, l, r);
+}
+```
+
 
 ## Hoare partitioning (basically a type of two pointer technique with some swaps involved)
 

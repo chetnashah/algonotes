@@ -32,7 +32,7 @@ class Interval {
 In Java:
 Use `Collections.Sort`:
 ```java
-Collections.sort(intervalsList, a, b -> Integer.compare(a.start, b.start))
+Collections.sort(intervalsList, (a, b) -> Integer.compare(a.start, b.start))
 ```
 
 In Python:

@@ -85,3 +85,7 @@ There `i+1` ways to select the first index of sub array where ith element would 
 There would be `(n-1)-i+1` ways to select end index of sub array -> Refer number of elements between two indices above.
 By product rule of counting answer is `(i+1) * (n-i)`.
 
+## Common powers of 2 compared with powers of 10:
+
+`2^10 ~ 10^3` and `2^20 ~ 10^6`
+

@@ -58,3 +58,37 @@ public int maxSubArray(int[] nums) {
 
 
 ### variant also report start end for max subarray sum
+
+### Variant: Max subarray sum with subarrays size k.
+
+#### Approach1: sliding window + prefix sums - O(n) time, O(n) space
+
+Prefix sums can give us range-sum of any window of size k in O(1)
+We iterate over all `n-k+1` windows and keep track of max.
+
+#### Approach2: Sliding window with running sum (no prefix sums needed) - O(n) time, O(1) space
+
+
+```java
+  int k = 4;
+
+  int presentSubArrayScore = 0;
+  int maxSubArrayScore = 0;
+  // initially min subarray score is sum of first window
+  for(int i=0;i<k;i++) {
+      maxSubArrayScore += cardPoints[i];
+  }
+  
+  // find min subarray window
+  for(int i=0;i<N;i++) {
+      presentSubArrayScore += cardPoints[i]; // add contribution of element sliding in the window
+      if(i >= k) {// we are sliding now
+          presentSubArrayScore -= cardPoints[i-t]; // remove contribution of element sliding out
+          if(presentSubArrayScore > maxSubArrayScore) { // keep track of max sum
+              maxSubArrayScore = presentSubArrayScore;
+          }
+      }
+  }
+
+  return maxSubArrayScore;
+```

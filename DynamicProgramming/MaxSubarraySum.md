@@ -53,4 +53,8 @@ public int maxSubArray(int[] nums) {
 
 ```
 
+### Divide and conquer approach to solve this: O(N lg N) time, O(lg N) complexity
+
+
+
 ### variant also report start end for max subarray sum

@@ -51,3 +51,110 @@ class Solution {
     }
 }
 ```
+
+### Recursive with memo code
+
+```java
+class Solution {
+    int[] ans;
+    public int rob(int[] nums) {
+        
+        if(nums.length == 1) {
+            return nums[0];
+        }
+        
+        ans = new int[nums.length];
+        for(int i=0;i<nums.length;i++) {
+            ans[i] = -1;
+        }
+        
+        ans[0] = nums[0];
+        ans[1] = Math.max(nums[0], nums[1]);
+        
+        return robAtIdx(nums.length-1, nums);
+    }
+    
+    int robAtIdx(int idx, int[] nums) {
+        // check memo
+        if(ans[idx] != -1) {
+            return ans[idx];
+        }
+        
+        // rob at this indx
+        int ans1 = nums[idx] + robAtIdx(idx-2, nums);
+        // do not rob at this idx
+        int ans2 = robAtIdx(idx-1, nums);
+        
+        int finalAns = Math.max(ans1, ans2);
+        ans[idx] = finalAns;
+        return ans[idx];
+    }
+}
+```
+
+## House robber but in a circle
+
+In a circle, `1` and `n-1` cannot be chosen together so pick better of `robMax([1..n-2])` or `robMax([2..n-1])`
+
+Slightly tricky impl because using same array, can be simplified if we run above procedure on two different arrays:
+```java
+class Solution {
+    static int[] ans;
+    public int rob(int[] nums) {
+        // 1 and n-1 cannot be chosen together 
+        // so pick better of [1..n-2] or [2..n-1]
+        
+        if(nums.length == 1) {
+            return nums[0];
+        }
+        
+        if(nums.length == 2) {
+            return Math.max(nums[0], nums[1]);
+        }
+        
+        int n = nums.length;
+        ans = new int[n];
+        for(int i=0;i<nums.length;i++) {
+            ans[i] = -1;
+        }
+        
+        
+        int firstRange = robAtIdx(n-2, nums, true);
+        
+        // clear again
+        for(int i=0;i<nums.length;i++) {
+            ans[i] = -1;
+        }
+
+        int secondRange = robAtIdx(n-1, nums, false);
+        
+        return Math.max(firstRange, secondRange);
+    }
+    
+    int robAtIdx(int idx, int[] nums, boolean firstPickAllowed) {
+        if(ans[idx] != -1) {
+            return ans[idx];
+        } 
+        if(idx == 0 && firstPickAllowed) {
+            return nums[0];
+        } else if(idx == 0 && !firstPickAllowed) {
+            return 0;
+        }
+        if(idx == 1 && firstPickAllowed) {
+            return Math.max(nums[0], nums[1]);
+        } else if ( idx == 1 && !firstPickAllowed) {
+            return nums[1];
+        }
+        
+        //pick at idx
+        int ans1 = nums[idx] + robAtIdx(idx-2, nums, firstPickAllowed);
+        
+        // not pick at idx
+        int ans2 = robAtIdx(idx-1, nums, firstPickAllowed);
+        
+        // memo and return
+        ans[idx] = Math.max(ans1, ans2);
+        return ans[idx];
+    }   
+}
+```

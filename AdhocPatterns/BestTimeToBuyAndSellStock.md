@@ -197,3 +197,19 @@ class Solution {
     }
 }
 ```
+
+## Variant buy and sell stock infinite number of times, nesting transactions not allowed
+
+Buy and sell on same day is allowed.
+
+### Example
+
+`[1,2,3,4]` => `1+1+1` = `3`
+`[5,4,3,2]` => `0`
+`[4,2,7,1,5]` => `(7-2) + (5-1)` => `5 + 4` = `9`
+
+### Proceed greedily (between consecutive days), ignore if next day decreases
+
+Any time you see increase in stock between current and next day, accumulate that profit.
+
+

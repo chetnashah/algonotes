@@ -37,3 +37,75 @@ Constraints:
 1 <= prices[i] < 5 * 104
 0 <= fee < 5 * 104
 ```
+
+
+## Observation 1: Problem specifies that sell should happen before Buy, so patterns would be like BSBSBS 
+
+It is not possible to nest transactions e.g. following is not allowed: `BBSS` or `BBSSBS` etc are not allowed. **Nesting is not allowed**.
+
+
+##  DP state
+
+`int getBestProfitFromFirst[idx][lastSellDone]`
+
+## DP recurrence diagram
+
+![Buy sell with fee recurrence](images/../../DynamicProgramming/images/buysellwithfeerecurrence.jpg)
+
+## Top down DP
+
+TODO understand this logic
+
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108871/2-solutions-2-states-DP-solutions-clear-explanation!
+
+### Code
+
+```java
+class Solution {
+    int[][] ans;
+    int sentinel = -9999999;
+    public int maxProfit(int[] prices, int fee) {
+        
+        ans = new int[prices.length][2];
+        
+        for(int i=0;i<prices.length;i++) {
+            ans[i][0] = sentinel;
+            ans[i][1] = sentinel;
+        }
+        
+        // lastSellDone : false -> 0, true -> 1
+        int getBestProfitWithLastSell = getBestProfit(prices.length - 1, 0, prices, fee);
+        
+        return getBestProfitWithLastSell;
+    }
+    
+    // get best profit upto idx, with sell allowed
+    int getBestProfit(int idx, int lastSellDone, int[] prices, int fee) {
+        // System.out.println("idx = "+idx+" lastSellDone = "+lastSellDone);
+        if(ans[idx][lastSellDone] != sentinel) {
+            return ans[idx][lastSellDone];
+        }
+        if(idx == 0) {
+            // buy at this 
+            if(lastSellDone == 1) {// finish the buy
+                return -1*prices[0];
+            }
+            // do nothing
+            int ans3=0;
+            return ans3;
+        }
+        
+        // sell
+        int ans1 = (lastSellDone == 0) ? (getBestProfit(idx-1, 1, prices, fee) + prices[idx] - fee): sentinel;
+        // buy 
+        int ans2 = (lastSellDone == 1) ? (getBestProfit(idx-1, 0, prices, fee) - prices[idx]) : sentinel;
+        // do nothing
+        int ans3 = getBestProfit(idx - 1, lastSellDone, prices, fee);
+        
+        int finalAns = Math.max(ans1, Math.max(ans2, ans3));
+        // System.out.println("finalAns for idx = " +idx +" ans = "+ finalAns);
+        ans[idx][lastSellDone] = finalAns;
+        return finalAns;
+    }
+}
+```

@@ -39,22 +39,14 @@ It is not possible to nest transactions e.g. following is not allowed: `BBSS` or
 
 ## Observation 2: store two arrays `buy[i]` and `sell[i]`
 
-## Top down DP state
-
-`int getBestProfitFromFirst[idx][lastSellDone]`
-
-## DP recurrence diagram
-
-
-
 ## Code
 
 ```java
 class Solution {
-    int[][] ans;
+        int[][] ans;
     int sentinel = -9999999;
-    public int maxProfit(int[] prices, int fee) {
-        
+
+    public int maxProfit(int[] prices) {
         ans = new int[prices.length][2];
         
         for(int i=0;i<prices.length;i++) {
@@ -63,14 +55,18 @@ class Solution {
         }
         
         // lastSellDone : false -> 0, true -> 1
-        int getBestProfitWithLastSell = getBestProfit(prices.length - 1, 0, prices, fee);
+        int getBestProfitWithLastSell = getBestProfit(prices.length - 1, 0, prices);
         
         return getBestProfitWithLastSell;
+
     }
     
-    // get best profit upto idx, with sell allowed
-    int getBestProfit(int idx, int lastSellDone, int[] prices, int fee) {
+    int getBestProfit(int idx, int lastSellDone, int[] prices) {
         // System.out.println("idx = "+idx+" lastSellDone = "+lastSellDone);
+        if(idx < 0) {
+            return 0;
+        }
+
         if(ans[idx][lastSellDone] != sentinel) {
             return ans[idx][lastSellDone];
         }
@@ -85,22 +81,17 @@ class Solution {
         }
         
         // sell
-        int ans1 = (lastSellDone == 0) ? (getBestProfit(idx-1, 1, prices, fee) + prices[idx] - fee): sentinel;
-        // buy 
-        int ans2 = (lastSellDone == 1) ? (getBestProfit(idx-1, 0, prices, fee) - prices[idx]) : sentinel;
+        int ans1 = (lastSellDone == 0) ? (getBestProfit(idx-1, 1, prices) + prices[idx]): sentinel;
+        // buy , we do idx-2, because buy can only done after a cooldown of one day
+        int ans2 = (lastSellDone == 1) ? (getBestProfit(idx-2, 0, prices) - prices[idx]) : sentinel;
         // do nothing
-        int ans3 = getBestProfit(idx - 1, lastSellDone, prices, fee);
+        int ans3 = getBestProfit(idx - 1, lastSellDone, prices);
         
         int finalAns = Math.max(ans1, Math.max(ans2, ans3));
         // System.out.println("finalAns for idx = " +idx +" ans = "+ finalAns);
         ans[idx][lastSellDone] = finalAns;
         return finalAns;
     }
+
 }
 ```
-
-## Top down DP
-
-TODO understand this logic
-
-https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/discuss/108871/2-solutions-2-states-DP-solutions-clear-explanation!

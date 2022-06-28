@@ -200,6 +200,8 @@ class Solution {
 
 ## Variant buy and sell stock infinite number of times, nesting transactions not allowed
 
+https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/
+
 Buy and sell on same day is allowed.
 
 ### Example
@@ -213,3 +215,25 @@ Buy and sell on same day is allowed.
 Any time you see increase in stock between current and next day, accumulate that profit.
 
 
+### Code 
+
+```java
+class Solution {
+    public int maxProfit(int[] prices) {
+        // greedy approach - check current and prev day and sell if increasing
+        
+        int ans = 0;
+        for(int i=1;i<prices.length;i++) {
+            if(prices[i] > prices[i-1]) {
+                ans+= prices[i] - prices[i-1];
+            }
+        }
+        
+        return ans;
+    }
+}
+```
+
+## Variation: with cooldwon
+
+Refer [Buy and sell stock with cooldwon](../Arrays/BuyAndSellStockWithCooldown.md)

@@ -3,6 +3,8 @@
 
 https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/
 
+https://www.youtube.com/watch?v=4wNXkhAky3s
+
 ##
 
 You are given an array prices where `prices[i]` is the price of a given stock on the `ith` day.

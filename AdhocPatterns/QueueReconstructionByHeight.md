@@ -109,7 +109,55 @@ And so on and so forth.
 ## Code 
 
 ```java
+class Solution {
+    public int[][] reconstructQueue(int[][] people) {
+        // sort by decreasing height , and for same height, increasing k value - this is by case wise analysis.
+        Arrays.sort(people, (a,b) -> {
+            int heightCompare = Integer.compare(b[0],a[0]);
+            if(heightCompare == 0) {
+                return Integer.compare(a[1],b[1]);
+            }
+            return heightCompare;
+        });
+        
+        // for(int i=0;i<people.length;i++) {
+        //     System.out.println(Arrays.toString(people[i]));
+        // }
+        
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> firstPerson = new ArrayList<>();
+        firstPerson.add(people[0][0]);
+        firstPerson.add(people[0][1]);
+        ans.add(firstPerson);// add first person
+        for(int i=1;i<people.length;i++) {
+            int[] currentPerson = people[i];
+            List<Integer> currPersonList = new ArrayList<>();
+            int currHeight = currentPerson[0];
+            int currK = currentPerson[1];
+            currPersonList.add(currHeight);
+            currPersonList.add(currK);
 
+            int j=0;
+            while(currK > 0) {
+                currK--;
+                j++;
+            }
+            // insert at right position, other elements ar shifted to the right
+            ans.add(j, currPersonList);
+        }
+        
+        // System.out.println(ans);
+        int[][] ansArray = new int[people.length][2];
+        
+        for(int i=0;i<people.length;i++) {
+            for(int j=0;j<2;j++) {
+                ansArray[i][j] = ans.get(i).get(j);
+            }
+        }
+        return ansArray;
+            
+    }
+}
 ```
 
 

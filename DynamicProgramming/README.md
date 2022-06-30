@@ -1,5 +1,10 @@
 
 
+https://www.youtube.com/watch?v=xQ4byx8XbXo
+
+##
+
+
 It's a tradeoff for sacrificing some space to get some time.
 
 A technique for efficiently implement a recursive algorithm by storing partial results. Trick is to seeing whether naive recursive algorithm computes same subproblems over and over.

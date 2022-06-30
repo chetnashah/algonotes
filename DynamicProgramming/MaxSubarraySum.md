@@ -92,3 +92,52 @@ We iterate over all `n-k+1` windows and keep track of max.
 
   return maxSubArrayScore;
 ```
+
+
+## Variation: Max sub array sum after one operation
+
+https://leetcode.com/problems/maximum-subarray-sum-after-one-operation/
+
+### Code
+
+```java
+class Solution {
+    public int maxSumAfterOperation(int[] nums) {
+        if(nums.length == 1) {
+            return nums[0] * nums[0];
+        }
+        // try bi directional dp
+        int[] maxSubArrSumLeft = new int[nums.length];
+        int[] maxSubArrSumRight = new int[nums.length];
+        
+        maxSubArrSumLeft[0]=nums[0];
+        for(int i=1;i<nums.length;i++) {
+            maxSubArrSumLeft[i] = Math.max(nums[i], maxSubArrSumLeft[i-1] + nums[i]);
+        }
+        
+        maxSubArrSumRight[nums.length-1] = nums[nums.length-1];
+        for(int i=nums.length-2;i>=0;i--) {
+            maxSubArrSumRight[i] = Math.max(nums[i], maxSubArrSumRight[i+1] + nums[i]);
+        }
+        
+        // System.out.println(Arrays.toString(maxSubArrSumLeft));
+        
+        // System.out.println(Arrays.toString(maxSubArrSumRight));
+        
+        int ansFirst = nums[0]*nums[0] + maxSubArrSumRight[1];
+        int ansLast = nums[nums.length-1] * nums[nums.length-1] + maxSubArrSumLeft[nums.length-2];
+        
+        int ansMiddle = -99999;
+        for(int i=1;i<nums.length-1;i++) {
+            int bestPossibleAtCurr = Math.max(
+                maxSubArrSumLeft[i-1] + maxSubArrSumRight[i+1],
+                Math.max(maxSubArrSumLeft[i-1], maxSubArrSumRight[i+1])
+            ) + nums[i] * nums[i];
+            ansMiddle = Math.max(ansMiddle, bestPossibleAtCurr);
+        }
+        
+        return Math.max(ansMiddle, Math.max(ansFirst, ansLast));
+        
+    }
+}
+```

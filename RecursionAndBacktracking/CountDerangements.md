@@ -21,6 +21,8 @@ for `[1,2,2,2,3]`
 
 ###  only count derangements - IDea: sort by freq dec, and rotate the whole array by maxFreq
 
+Basically if you rotate by max freq, rest of elements are not goint to collide i.e. result in arrangement.
+
 E.g.
 for `[1,2,2,2,3]`
 sorted by decreasing freq = `[2,2,2,1,3]` -> max freq = 3.
@@ -33,7 +35,7 @@ rotating original array by 3, we have
 1. add index at denominator
 2. sort by inc freq. and capture max freq
 3. shift by max freq
-4. place numerator to denom index before shift. -> This is the answer
+4. place numerator to denom index before shift. -> This is the answer ( why are we doing this step, because sorted and shifted arr have maximum derangements)
 
 e.g.`[1,2,3,2,2]`
 

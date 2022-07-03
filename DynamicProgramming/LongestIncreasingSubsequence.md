@@ -1,7 +1,77 @@
 
 https://cp-algorithms.com/sequences/longest_increasing_subsequence.html
 
+https://www.youtube.com/watch?v=cjWnW0hdF1Y (top down - )
+
 ## Two variations, just get length vs printing longest increasing subsequence
+
+## Variation: count number of LIS 
+
+https://leetcode.com/problems/number-of-longest-increasing-subsequence/
+
+### Tricky bits 1: there can many ways to form intermediate subsequence lengths
+
+### there can be more than one independent same length longest increasing subsequences
+
+Edge cases:
+```
+[1,3,5,4,7]
+[2,2,2,2,2]
+[1,2,4,3,5,4,7,2]
+[1,3,2]
+[3,2,1]
+[1,2,3,1,2,3,1,2,3]
+[84,-48,-33,-34,-52,72,75,-12,72,-45]
+```
+
+### Code
+
+```java
+class Solution {
+    public int findNumberOfLIS(int[] nums) {
+        int n = nums.length;
+        
+        int[] dp = new int[n];
+        Arrays.fill(dp, 1);
+        
+        int[] count = new int[n];
+        Arrays.fill(count, 1);
+        
+        int maxi = 1;
+        
+        for (int i = 0; i < n; i++) {
+            for (int prev = 0; prev < i; prev++) {
+                
+                // firs time max
+                if (nums[prev] < nums[i] && 1 + dp[prev] > dp[i]) {
+                    dp[i] = 1 + dp[prev];
+                    
+                    // Inherit
+                    count[i] = count[prev];
+                }
+                // same as existing max, increase count
+                else if (nums[prev] < nums[i] && 1 + dp[prev] == dp[i]) {
+                    
+                    // Increase the count
+                    count[i] += count[prev];
+                }
+            }
+            
+            maxi = Math.max(maxi, dp[i]);
+        }
+        
+        int countLIS = 0;
+        
+        for (int i = 0; i < n; i++) {
+            if (dp[i] == maxi) {
+                countLIS += count[i];
+            }
+        }
+        
+        return countLIS;
+    }
+}
+```
 
 ## Longest increasing subsequence length
 

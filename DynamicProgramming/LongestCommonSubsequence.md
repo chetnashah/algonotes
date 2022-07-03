@@ -10,6 +10,21 @@ The value of `f[i][j]` can be computed in this problem knowing the values of `f[
 
 Then the final answer is the value of `f[n][m]`. In this approach, an entry in  table is called a state, and since the table is 2-dimensional, this dynamic programming solution is 2-dimensional
 
+## Memory optimization
+
+In the normal solution, the memory complexity is O(m*n).
+But if we only need the length of LCS, and no-need to construct actual LCS, we can optimizer memory.
+
+since the current state takes values from either:
+1. same row, elements to the left, or
+2. previous row, element to the top or top left.
+
+Hence any moment in time we need only two rows of memory and we can get rid of the rest of memory.
+
+### Code
+
+TODO
+
 ## Recursive LCS (without memo)
 
 ```java

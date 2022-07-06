@@ -89,3 +89,15 @@ By product rule of counting answer is `(i+1) * (n-i)`.
 
 `2^10 ~ 10^3` and `2^20 ~ 10^6`
 
+## Reverse elements of array from inx start to end inclusive
+
+```java
+    void reverseWord(int start, int end, char[] s) {        
+        for(int i=0;i<=(end-start)/2;i++) {
+            char c = s[start+i];
+            char c2 = s[end-i];
+            s[start+i] = c2;
+            s[end-i] = c;
+        }
+    }
+```

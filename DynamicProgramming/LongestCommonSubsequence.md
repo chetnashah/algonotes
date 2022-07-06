@@ -88,5 +88,7 @@ public class Main {
 
 ## Applications
 
-1. Longest palindromic subsequence - 
+1. Longest palindromic subsequence - LCS of string with its reverse give us longest palindromic subsequence.
+
+
 

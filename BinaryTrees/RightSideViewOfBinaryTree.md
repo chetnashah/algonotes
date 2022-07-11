@@ -56,6 +56,55 @@ class Solution {
 }
 ```
 
+### One more code submission
+
+```java
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<Integer> rightSideView(TreeNode root) {
+        if(root == null) {
+            return new ArrayList<>();
+        }
+        List<Integer> ans = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        
+        q.add(root);
+        while(!q.isEmpty()) {// we have a new level to process
+            int levelLength = q.size();
+            // inner loop processes whole level in oneshot
+            for(int i=0;i<levelLength;i++) {
+                TreeNode node = q.remove();
+                if(i == levelLength-1) {// last node in this level, put it in ans
+                    ans.add(node.val);
+                }
+                if(node.left != null) {
+                    q.add(node.left);
+                }
+                if(node.right != null) {
+                    q.add(node.right);
+                }
+            }
+        }
+        
+        return ans;
+    }
+}
+```
+
 
 ## Recursive DFS approach (right recursion, pick best per level and store it, ignore the rest on that level)
 

@@ -101,3 +101,19 @@ By product rule of counting answer is `(i+1) * (n-i)`.
         }
     }
 ```
+
+## Visiting a grid via 4-paths -> up,down,left,righ
+
+```java
+int[][] dirs = new int[][]{{0,1}, {1,0}, {-1, 0}, {0, -1}};
+
+for(int d=0;d<dirs.length;d++) {
+    int nextCellRow = i + dirs[d][0];
+    int nextCellColumn = j + dirs[d][1];
+    if(nextCellRow >=0 && nextCellRow < matrix.length
+        && nextCellColumn >=0 && nextCellColumn < matrix[0].length
+        ) {
+            // do something with matrix[nextRow][nextColumn]
+    }
+}
+```

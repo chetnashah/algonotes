@@ -273,6 +273,7 @@ See [Coin change](CoinChange.md)
 There are 𝑁 items. The 𝑖-th item has weight 𝑤𝑖. 
 Find a set 𝑆 such that ∑𝑖∈𝑆(𝑤𝑖=𝐶)
 
-It is variant of knapsack where we are looking for subset that sums exact weight C.
-Another variant: count such subsets which add up to weight C.
-Another variant: canSum -> returning true/false if a subset exists that can sum to weight C.
+It is variant of knapsack where we are **looking for subset that sums exact weight C**.
+Another variant: count such subsets which add up to weight C. [count subsets with sum k](NumberOfSubsetsWithSumK.md)
+Another variant: canSum -> returning true/false if a subset exists that can sum to weight C.[exists subset with sum k](SubsetWithSumKExistsOrNot.md)
+

@@ -54,6 +54,9 @@ recurrence will help to transition between states.
 
 ## Memoize solved problems
 
+If you want to do memoization with three states: `true`, `false`, `null`,
+Then prefer `Map<statestring, boolean>` over `boolean[]`.
+
 ## Two-D dp[i][j]
 
 For a `dp[i][j]`:

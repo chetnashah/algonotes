@@ -26,3 +26,12 @@ the range for permutation elements is given via `[start, end)`.
 ## State space visualization
 
 Always put the first statement in the recursive function as the print statement that prints the state
+
+## To properly indent call stack try adding padding to each statement
+
+increment `nestCnt` in each recursive call
+
+```java
+String padding = String.join("", Collections.nCopies(nestCnt, " "));
+```
+

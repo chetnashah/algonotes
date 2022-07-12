@@ -1,4 +1,12 @@
 
+##
+
+https://www.youtube.com/watch?v=XrB_MWPjHHc
+
+https://www.youtube.com/watch?v=vRVfmbCFW7Y
+
+
+
 ## Goal
 
 Minimize no. of multiplications needed for multiplying a chain of matrices

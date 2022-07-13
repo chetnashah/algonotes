@@ -12,6 +12,26 @@ https://www.youtube.com/watch?v=vRVfmbCFW7Y
 Minimize no. of multiplications needed for multiplying a chain of matrices
 e.g. A x B x C x D x E
 
+
+## General abstraction (Partition DP)
+
+Recursive decomposition into partitions. (think of split/break as the last combine step)
+
+You can think of this problem as breaking a chain into two parititons,
+where the partition break is the last combine step that will happen.
+
+
+### decomposition diagram
+
+You can notice the repeating subproblems in the diagram.
+
+![MCM partition](images/MCMparitions.png)
+
+
+### Recursive/memo formulation of MCM
+
+
+
 ## Cost of multiplying two matrices A and B
 
 if A is of dimension `i x j`, and B is of dimension `j x k`,

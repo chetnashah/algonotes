@@ -25,6 +25,11 @@ and
 e.g. `7 = 1 (mod 6)`: means `7` and `1` give same remainder when divided by `6`.
 `% m` means remainder on dividing with `m`.
 
+
+### Modulo of negative numbers
+
+https://stackoverflow.com/questions/4412179/best-way-to-make-javas-modulus-behave-like-it-should-with-negative-numbers/4412200#4412200
+
 ### Divides relation
 
 Forms a partial order over integers.

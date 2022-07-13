@@ -138,7 +138,7 @@ class Solution {
             currPersonList.add(currK);
 
             int j=0;
-            while(currK > 0) {
+            while(currK > 0) {// increment till currK becomes zero and it will be its final position according to K
                 currK--;
                 j++;
             }

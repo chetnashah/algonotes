@@ -45,3 +45,8 @@ def MorrisTraversal(root):
                     break
                 pre = pre.right
 ```
+
+## Variant: Reverse morris traversal
+
+https://www.geeksforgeeks.org/reverse-morris-traversal-using-threaded-binary-tree/
+

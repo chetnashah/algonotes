@@ -2,7 +2,7 @@
 
 ## Total Order
 
-a total or linear order is a partial order in which any two elements are comparable. That is, a total order is a binary relation $\leq$  on some set $X$, which satisfies the following for all $a,b and c in X$:
+a total or linear order is a partial order in which any two elements are comparable. That is, a total order is a binary relation $\leq$  on some set `X`, which satisfies the following for all `a`,`b` and `c` in `X`:
 
 * $a \leq a$ (reflexive).
 * If $a \leq b$ and $b \leq c$ then $a\leq c$ (transitive).

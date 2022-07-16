@@ -19,7 +19,7 @@ A partial order relation is a homogeneous relation that is transitive and antisy
 A reflexive, weak, or non-strict partial order is a homogeneous relation ≤ on a set P that is `reflexive`, `antisymmetric`, and `transitive`.
 
 1. Reflexivity: $a \leq a$
-2. AntiSymmetric: If $a \leq b$ and $b \leq a$ then $ a = b $
+2. AntiSymmetric: If $a \leq b$ and $b \leq a$ then $a = b$
 3. Transitive: If $a \leq b$ and $b \leq c$ then $a \leq c$
 
 

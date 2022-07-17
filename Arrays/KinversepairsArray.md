@@ -43,6 +43,10 @@ no of 6 inversions: 1
 
 ![recurrence dp](images/recurrencedp.png)
 
+eFfect of count on adding new element recurrence:
+
+![recurrence dp 2](images/addingnewelementrecurrence.png)
+
 ## TODO understand full problem/recurrence derivation
 
 https://leetcode.com/problems/k-inverse-pairs-array/solution/

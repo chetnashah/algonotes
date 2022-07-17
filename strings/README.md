@@ -25,3 +25,17 @@ A substring of length `k` is known as a `k-mer`.
 How many `k-mer`s are there in a string of length n?
 Ans: `n-k+1` k-mers in a string
 
+## Factor of string
+
+Factor is another word for substring
+
+## Border of string
+
+A `border` of a non-empty string s is proper substring of s, that is both prefix and suffix of s.
+
+Thus $\phi$, `a`, `aa`, `aabaa` are all borders of `aabaabaa`.
+The border of a border of given string `s` is also a border of `s`.
+
+
+`Border(x)` = longest border of x.
+

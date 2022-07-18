@@ -129,3 +129,18 @@ So total number of submatrices is: ${m+1 \choose 2} * {n+1 \choose 2}$ or $\frac
 
 ### Number of submatrices of fixed-size (a rows x b columns)
 
+
+## Computing 1D prefix sum
+
+`p[i] = p[i-1] + a[i], i>0`, and `p[0]=a[0]`.
+
+## Computing 2D prefix sum
+
+```py
+for i in 1 to rows:
+    for j in 1 to cols:
+        P[i][j] =   P[i-1][j]     # sum all elements of row above 
+                    + P[i][j-1]   # sum of all elements of column before
+                    - P[i-1][j-1] # remove duplicate sum
+                    + A[i]        # consider element itself
+```

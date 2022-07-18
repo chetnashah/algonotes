@@ -118,7 +118,7 @@ for(int d=0;d<dirs.length;d++) {
 }
 ```
 
-## Number of submatrices of a given matrix of length (m rows x n columns)
+## Number of submatrices of a given matrix (m rows x n columns)
 
 An `m` x `n` matrix can be thought of as `m+1` horizontal lines and `n+1` vertical lines.
 

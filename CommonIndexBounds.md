@@ -122,8 +122,9 @@ for(int d=0;d<dirs.length;d++) {
 
 An `m` x `n` matrix can be thought of as `m+1` horizontal lines and `n+1` vertical lines.
 
-For any horizontal lines can be choosed in $m+1 \choose 2$ and any horizontal range can be chosen in $n+1 \choose 2$ ways (which are independent so product rule can be applied).
+For any horizontal lines can be choosed in $m+1 \choose 2$ ways and any horizontal range can be chosen in $n+1 \choose 2$ ways (which are independent so product rule can be applied).
 
+So total number of submatrices is: ${m+1 \choose 2} * {n+1 \choose 2}$ or $^{m * (m+1) * n * (n+1)}_{4}$
 
 
 ### Number of submatrices of fixed-size (a rows x b columns)

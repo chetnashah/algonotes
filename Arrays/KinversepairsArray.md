@@ -47,6 +47,8 @@ eFfect of count on adding new element recurrence:
 
 ![recurrence dp 2](images/addingnewelementrecurrence.png)
 
+## Observation: the placement of largest element does not affect the subproblem by dividing it into left and right partition
+
 ## TODO understand full problem/recurrence derivation
 
 https://leetcode.com/problems/k-inverse-pairs-array/solution/

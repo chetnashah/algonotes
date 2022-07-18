@@ -92,14 +92,14 @@ By product rule of counting answer is `(i+1) * (n-i)`.
 ## Reverse elements of array from inx start to end inclusive
 
 ```java
-    void reverseWord(int start, int end, char[] s) {        
-        for(int i=0;i<=(end-start)/2;i++) {
-            char c = s[start+i];
-            char c2 = s[end-i];
-            s[start+i] = c2;
-            s[end-i] = c;
-        }
+void reverseWord(int start, int end, char[] s) {        
+    for(int i=0;i<=(end-start)/2;i++) { // note the less than or equal to
+        char c = s[start+i];
+        char c2 = s[end-i];
+        s[start+i] = c2;
+        s[end-i] = c;
     }
+}
 ```
 
 ## Visiting a grid via 4-paths -> up,down,left,righ

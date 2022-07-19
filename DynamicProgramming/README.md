@@ -41,6 +41,12 @@ memset(dp, -1, sizeof(dp));// nitialize dp grid with -1
 
 
 
+## Different forms of DP
+
+### Knapsack (with twist) or Subset selection with restrictions/optimizations
+
+### 
+
 ## Try to come up with state
 
 Maybe 1d or 2d.

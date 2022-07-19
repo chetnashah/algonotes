@@ -73,6 +73,8 @@ class Solution {
 
 a string s can be a subsequence of t, by either deletes in t, or by insertions in s.
 
+### TODO code and complexity
+
 ## Variation: Serveral incoming source strings S1, S2, ... Sn and a fixed target string T
 
 For each source string, we would incur O(T) (based on two pointers matching mentioned earlier).

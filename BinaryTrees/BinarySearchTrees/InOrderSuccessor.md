@@ -12,7 +12,7 @@ Variant: Without parent pointers: https://leetcode.com/problems/inorder-successo
 
 If at any point the predecessor `previous` is equal to the node given to us, then the `current` node will be its inorder successor.
 
-# Optimal approach (Using BST approach)
+# Optimal approach (Using BST approach) - from leetcode solutions
 
 Assumption: You are given both the root node ref and the given node ref.
 
@@ -49,7 +49,9 @@ while (root != null) {// we will traverse from root till the end of tree
 }
 ```
 
-# Varaint : Approach with parent pointers: Assuming **parent pointers are present for each node**
+# Varaint : Approach with parent pointers: Assuming **parent pointers are present for each node** 
+
+Solution is taken from CLRS book
 
 https://leetcode.com/problems/inorder-successor-in-bst-ii/
 

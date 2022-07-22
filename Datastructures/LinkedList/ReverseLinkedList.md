@@ -1,4 +1,7 @@
 
+https://leetcode.com/problems/reverse-linked-list/
+
+
 ## In start, Keep two pointers, curr & prev, and intermediate temp pointer in iteration
 
 ## Start before iteration
@@ -45,5 +48,7 @@ in reverse linked list so we `return prev`.
     }
 ```
 
-https://leetcode.com/problems/reverse-linked-list/
 
+## Recursive Linked list reversal
+
+TODO

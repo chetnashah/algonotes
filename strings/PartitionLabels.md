@@ -74,15 +74,16 @@ class Solution {
         
         List<Integer> ans = new ArrayList<>();
         int[] largestIdxSeen = new int[26]; // for every char track largest index seen
-        
+        int[] freq = new int[26];
+
         Arrays.fill(largestIdxSeen, -1);
         
         for(int i=0;i<s.length();i++) {
             largestIdxSeen[s.charAt(i) - 'a'] = i;
+            freq[s.charAt(i)- 'a']++;
         }
         
         // System.out.println(Arrays.toString(largestIdxSeen));
-        
         int potentialEndIdx = 0;
         int startIdx = 0;
         for(int i=0;i<s.length(); i++) {

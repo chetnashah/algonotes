@@ -31,6 +31,10 @@ Fast points to end of list
 
 ## Applications
 
+### Delete middle element of linkedlist
+
+https://leetcode.com/problems/delete-the-middle-node-of-a-linked-list/
+
 Delete middle element of linkedlist (the one to the right in case of even length).
 
 ```java

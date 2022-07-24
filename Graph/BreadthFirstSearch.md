@@ -30,7 +30,7 @@ Q.push(s)
 
 ### Gotchas
 
-1. we mark a node as seen/visited **before adding to the queue**, not after popping from the queue.
+1. we mark a node as seen/visited **before adding to the queue**, not after popping from the queue. Why? Marking as visited upon insertion prevents the same node being inserted more than once. try with example 0->1,0->2, 0->3.
 2. an adjacent node is only processed if it was not seen/visited before.
 ### Implementation
 

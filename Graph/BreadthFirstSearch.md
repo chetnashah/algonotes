@@ -28,10 +28,14 @@ Q.push(s)
    2. mark it visited
    3. add its adjacent vertices to the Queue
 
+### Gotchas
+
+1. we mark a node as seen/visited **before adding to the queue**, not after popping from the queue.
+2. an adjacent node is only processed if it was not seen/visited before.
 ### Implementation
 
 ```java
-List<List<Integer>> adj = new ArrayList<>();
+List<List<Integer>> adj = new ArrayList<>();// graph representation
 
 int n;// number of nodes
 int s; // source start vertex
@@ -45,12 +49,11 @@ q.add(s);
 d[s] = 0;// distance of source is 0
 p[s] = -1;// marker for source vertex
 seen[s] = true;
-seen[s] = true;
 while(!q.isEmpty()) {
    int u = q.remove();
    for(int v: adj(u)) { // going from u to v
       if(!seen[v]) {
-         seen[v] = true;
+         seen[v] = true;// mark explored/visited - which is equivalent to pushed to the queue once
          p[v] = u;// record parent
          d[v] = d[u]+1;// record distance
          q.push(v);

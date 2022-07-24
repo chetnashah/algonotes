@@ -60,6 +60,33 @@ Proof: every cell to the right and bottom of visit cell will be greater than vis
 
 visit cell is greatest in current column (in trivial case this is true, because it starts from bottom left), and it is still smaller than target, so there is no possibility of finding target in the current column, and we must leave it to the left.
 
+### Code
+
+```java
+class Solution {
+    public boolean searchMatrix(int[][] matrix, int target) {
+        
+        // start with bottom left
+        int row = matrix.length-1;
+        int col = 0;
+        
+        while(row>=0 && col<= matrix[0].length-1) {
+            int cellValue = matrix[row][col];
+            if(cellValue == target){
+                return true;
+            }
+            
+            // cellvalue is greater than target, must go up
+            if(cellValue > target) {
+                row--;
+            } else {
+                col++;
+            }
+        }
+        return false;
+    }
+}
+```
 
 
 ## Variation: first integer of a row is greater than last element in previous row

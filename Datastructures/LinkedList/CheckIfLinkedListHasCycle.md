@@ -16,3 +16,46 @@ The fast runner is just one step behind the slow runner. In the next iteration, 
 ## Code
 
 https://leetcode.com/problems/linked-list-cycle/
+
+```java
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ 
+ //             sf
+ //   3 -> 2 -> 0 
+ //        | <- |
+ */
+public class Solution {
+    public boolean hasCycle(ListNode head) {
+        // single element, no cycle possible
+        if(head == null || head.next == null) {
+            return false;
+        }
+        
+        ListNode slow = null;
+        ListNode fast = head;
+        
+        while(fast != null && fast.next != null) {
+            if(fast == slow) {
+                return true;
+            }
+            fast = fast.next.next;
+            if(slow == null) {
+                slow = head;
+            } else {
+                slow = slow.next;
+            }
+        }
+        
+        return false;
+    }
+}
+```
